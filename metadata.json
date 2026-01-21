@@ -1,0 +1,7 @@
+{
+  "name": "local-guide",
+  "description": "Una aplicación de guía local con una estética pastel suave para descubrir negocios, eventos y servicios en tu comunidad.",
+  "requestFramePermissions": [
+    "geolocation"
+  ]
+}
