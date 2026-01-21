@@ -18,11 +18,11 @@ const Hero: React.FC = () => {
         <div className="bg-white p-3 rounded-3xl shadow-2xl flex flex-col md:flex-row gap-3 max-w-3xl mx-auto border border-baby-blue/30">
           <div className="flex-1 flex items-center px-5 border-b md:border-b-0 md:border-r border-slate-100">
             <span className="material-symbols-outlined text-slate-400 mr-3">search</span>
-            <input className="w-full bg-transparent border-none focus:ring-0 text-sm font-bold h-14" placeholder="¿Qué buscas?" type="text" />
+            <input className="w-full bg-transparent border-none focus:ring-0 text-sm font-bold h-14 text-black" placeholder="¿Qué buscas?" type="text" />
           </div>
           <div className="flex-1 flex items-center px-5">
             <span className="material-symbols-outlined text-slate-400 mr-3">location_on</span>
-            <input className="w-full bg-transparent border-none focus:ring-0 text-sm font-bold h-14" placeholder="Madrid, ES" type="text" defaultValue="Madrid, ES" />
+            <input className="w-full bg-transparent border-none focus:ring-0 text-sm font-bold h-14 text-black" placeholder="Madrid, ES" type="text" defaultValue="Madrid, ES" />
           </div>
           <Link to="/buscar" className="bg-butterscotch text-slate-800 px-10 py-4 rounded-2xl font-black hover:brightness-105 transition-all flex items-center justify-center gap-2 shadow-lg shadow-butterscotch/20">
             <span>Buscar</span>
