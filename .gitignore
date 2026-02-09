@@ -21,4 +21,11 @@ dist-ssr
 *.ntvs*
 *.njsproj
 *.sln
-*.sw?
+
+# Next.js
+.next/
+out/
+build/
+
+# production
+node_modules/

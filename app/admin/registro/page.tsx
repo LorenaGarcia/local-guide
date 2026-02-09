@@ -1,11 +1,12 @@
+"use client";
 
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useRouter } from 'next/navigation';
 import { Formik, Form, Field } from 'formik';
-import { registrationValidationSchema, getStepOneInitialValues } from '../utils/formValidation';
+import { registrationValidationSchema, getStepOneInitialValues } from '@/utils/formValidation';
 
-const AdminRegister: React.FC = () => {
-  const navigate = useNavigate();
+export default function AdminRegister() {
+  const router = useRouter();
   const [activeType, setActiveType] = useState<'negocio' | 'evento'>('negocio');
 
   const categories = {
@@ -124,7 +125,7 @@ const AdminRegister: React.FC = () => {
                         errors.name && touched.name ? 'border-red-200 focus:ring-red-100' : 'border-transparent focus:ring-brand-teal/10'
                       }`}
                     />
-                    {errors.name && touched.name && <div className="text-red-500 text-xs font-bold mt-2 ml-2">{errors.name}</div>}
+                    {typeof errors.name === 'string' && touched.name && <div className="text-red-500 text-xs font-bold mt-2 ml-2">{errors.name}</div>}
                   </div>
 
                   <div>
@@ -168,7 +169,7 @@ const AdminRegister: React.FC = () => {
               <div className="flex items-center justify-between pt-8">
                 <button
                   type="button"
-                  onClick={() => navigate('/')}
+                  onClick={() => router.push('/')}
                   className="flex items-center gap-2 text-slate-500 font-black hover:text-slate-800 transition-colors"
                 >
                   <span className="material-symbols-outlined text-xl">arrow_back</span>
@@ -224,6 +225,4 @@ const AdminRegister: React.FC = () => {
       </Formik>
     </div>
   );
-};
-
-export default AdminRegister;
+}
