@@ -12,14 +12,14 @@ export const BUSINESSES: Business[] = [
   {
     id: '1',
     name: 'Serene Pilates Studio',
-    category: 'Fitness y Bienestar',
+    category: 'Salud',
     subCategory: 'PILATES',
     tag2: 'BOUTIQUE',
     rating: 4.9,
     reviewsCount: 128,
     description: 'Santuario boutique dedicado al arte del movimiento y alineación consciente.',
     shortDescription: 'Clases personalizadas y Reformers de alta gama para todos los niveles.',
-    image: 'https://images.unsplash.com/photo-1518611012118-29615b63eeac?auto=format&fit=crop&q=80&w=1200',
+    image: 'https://ik.imagekit.io/rezeve/business/fc33b7a3-d36e-48b3-8db8-6ae36a971ae5/image/editor/bb22199e-108b-4e3b-a2bc-abea69659d03.jpg',
     isFeatured: true,
     priceLevel: '$35/clase',
     priceRange: '$35 – $60',
@@ -32,9 +32,10 @@ export const BUSINESSES: Business[] = [
       address: '124 Boutique Row, Arts District, San Francisco' 
     },
     gallery: [
-      'https://images.unsplash.com/photo-1518611012118-29615b63eeac?auto=format&fit=crop&q=80&w=1200',
-      'https://images.unsplash.com/photo-1599447421416-3414502de1f3?auto=format&fit=crop&q=80&w=800',
-      'https://images.unsplash.com/photo-1524594152303-9fd13543fe6e?auto=format&fit=crop&q=80&w=800'
+      'https://images.squarespace-cdn.com/content/v1/67ac3737684f1d77a47bf50d/e65804c7-d531-464e-9e81-5b2b4c6e4563/Room1_004.jpg',
+      'https://images.squarespace-cdn.com/content/v1/516cd467e4b06cb596b9d567/1749790073548-3X0MO4ZSSHZZZLNRD1DS/LMX06732.jpg?format=2500w',
+      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQTN0wtWCK22SCENRKYgtbJ5GuGFFQRL_w5lQ&s',
+      'https://images.squarespace-cdn.com/content/v1/5f1e377d1df2720f7bec5fb8/6cc4c08f-bf03-4f76-851d-049ee5dcb0d2/IMG_4771.jpeg'
     ],
     fullDescription: 'Serene Pilates Studio es un santuario boutique dedicado al arte del movimiento. Fundado en 2018, nos especializamos en Pilates contemporáneo, combinando métodos tradicionales con ciencia atlética moderna. Nuestro espacio está diseñado para ser tu escape urbano: inundado de luz natural, con reformers de alta gama y liderado por un equipo de instructores certificados apasionados por la alineación consciente.',
     socialLinks: {
@@ -53,64 +54,74 @@ export const BUSINESSES: Business[] = [
       weekdays: '6:00 AM - 9:00 PM',
       weekends: '8:00 AM - 4:00 PM'
     },
-    featuredReview: {
-      text: '"Los instructores aquí transformaron mi enfoque del fitness. No es solo un entrenamiento; es un reinicio para mi mente y cuerpo cada mañana."',
-      author: 'Sarah Jenkins',
-      authorImage: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&q=80&w=200',
-      memberSince: 'Miembro desde 2021'
-    },
     workshops: [
       { id: 'w1', title: 'Taller de Restauración Luna Llena', date: 'Domingo, 24 Oct • 6:30 PM - 8:30 PM', price: '$45', badge: 'EVENTO ESPECIAL' },
-      { id: 'w2', title: 'Intro a Clase de Reformer', date: 'Todos los Martes • 8:00 AM', price: 'GRATIS', badge: 'PRIMERA VISITA' }
+      { id: 'w2', title: 'Intro a Clase de Reformer', date: 'Todos los Martes • 8:00 AM', price: 'GRATIS', badge: 'PRIMERA VISITA' },
+      { id: 'w3', title: 'Intro a Clase de Reformer2', date: 'Todos los Martes • 8:00 AM', price: '$150', badge: 'EVENTO ESPECIAL' },
+      { id: 'w4', title: 'Intro a Clase de Reformer3', date: 'Todos los Martes • 8:00 AM', price: '$50', badge: 'PRIMERA VISITA' }
     ]
   },
   {
     id: '2',
     name: 'Iron Haven Gym',
-    category: 'Fitness y Bienestar',
+    category: 'Salud',
     subCategory: 'GIMNASIO',
     tag2: 'CROSSFIT',
     rating: 4.7,
     reviewsCount: 156,
     description: 'Entrenamiento funcional y pesas libres 24/7 con equipamiento profesional.',
     shortDescription: 'Entrenamiento funcional y pesas libres 24/7 con equipamiento profesional.',
-    image: 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&q=80&w=800',
+    image: 'https://mrfitness.com.mx/wp-content/uploads/2025/08/GIMNASIO-2-3.jpg',
     priceLevel: '$$',
     priceRange: '$45 – $120',
     priceUnit: 'al mes',
     distance: '1.2 millas',
     tags: ['24/7'],
-    location: { lat: 37.7858, lng: -122.4064, address: '567 Iron Way, San Francisco' }
+    location: { lat: 37.7858, lng: -122.4064, address: '567 Iron Way, San Francisco' },
+    gallery: [
+      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_c2_f81ibC7KScZaQfqOQsB2tSMOwl4F-RQ&s',
+      'https://franquiciashoy.com/img/blog/franquicias-en-mexico-Imgs-790x440-02.jpg',
+      'https://nutrifitness.mx/wp-content/uploads/2023/07/javi-gimnasio-1024x1024.jpg'
+    ],
+    workshops: [
+      { id: 'w1', title: 'Taller de Restauración Luna Llena', date: 'Domingo, 24 Oct • 6:30 PM - 8:30 PM', price: '$45', badge: 'EVENTO ESPECIAL' },
+      { id: 'w2', title: 'Intro a Clase de Reformer', date: 'Todos los Martes • 8:00 AM', price: 'GRATIS', badge: 'PRIMERA VISITA' }
+    ]
   },
   {
     id: '3',
     name: 'Flow Yoga Collective',
-    category: 'Fitness y Bienestar',
+    category: 'Salud',
     subCategory: 'YOGA',
     tag2: 'MEDITACIÓN',
     rating: 5.0,
     reviewsCount: 89,
     description: 'Vinyasa, Hatha y sesiones de meditación guiada en un entorno relajante.',
     shortDescription: 'Vinyasa, Hatha y sesiones de meditación guiada en un entorno relajante.',
-    image: 'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&q=80&w=800',
+    image: 'https://www.bkmag.com/wp-content/uploads/2025/06/Screenshot-2025-06-04-at-3.24.13%E2%80%AFPM.png',
     priceLevel: '$',
     priceRange: '$20 – $180',
     priceUnit: 'planes',
     distance: '2.5 millas',
     tags: ['NIVEL AVANZADO'],
-    location: { lat: 37.7599, lng: -122.4376, address: '890 Zen St, San Francisco' }
+    location: { lat: 37.7599, lng: -122.4376, address: '890 Zen St, San Francisco' },
+    gallery: [
+      'https://images.squarespace-cdn.com/content/v1/60ac0e06e76b4732906b763f/1683843268963-J95ETOBM8BC9KVG40NFU/tcn-home-page_mobile.jpg?format=2500w',
+      'https://images.squarespace-cdn.com/content/v1/5f3b180bebcf7a5e8e8685a9/1b927512-184d-4759-a730-0d2b0e696d1a/Victoria+Web-29.jpg',
+      'https://notion.blupp.co/v1/asset/a12566fa-090b-45d4-9154-6f9cd72efa94/c8f8141b-24a9-4f7b-a584-b34801663ff8/0a9f4f6e-e28c-4b68-b81b-64dd1c237c1b/yoga-sanctum-at-the-imperial-new-delhi-scaled-qf1qqtiwmnldrchip6h9nadakzz5ogxih6pznh4rc4.jpg?quality=80&width=1200'
+    ],
   },
   {
     id: '4',
     name: 'Pure Balance Pilates',
-    category: 'Fitness y Bienestar',
+    category: 'Salud',
     subCategory: 'PILATES',
     tag2: 'BOUTIQUE',
     rating: 4.8,
     reviewsCount: 112,
     description: 'Entrena tu core con los mejores especialistas de la zona.',
     shortDescription: 'Entrena tu core con los mejores especialistas de la zona.',
-    image: 'https://images.unsplash.com/photo-1518611012118-29615b63eeac?auto=format&fit=crop&q=80&w=800',
+    image: 'https://assets-cdn.wellhub.com/images/?su=https://images.partners.gympass.com/image/partners/b8cd1072-0232-4f9f-8303-735f12cab4ac/lg_9528f5f4-7fad-4ba3-b570-2ae60dbba0f5_Imagen1Wellhub.jpg',
     priceLevel: '$$',
     priceRange: '$40 – $70',
     priceUnit: 'por sesión',
@@ -121,7 +132,7 @@ export const BUSINESSES: Business[] = [
   {
     id: '5',
     name: 'Elite Crossfit Hub',
-    category: 'Fitness y Bienestar',
+    category: 'Salud',
     subCategory: 'CROSSFIT',
     tag2: 'GIMNASIO',
     rating: 4.9,
@@ -138,7 +149,7 @@ export const BUSINESSES: Business[] = [
   {
     id: '6',
     name: 'Zen Space Yoga',
-    category: 'Fitness y Bienestar',
+    category: 'Salud',
     subCategory: 'YOGA',
     tag2: 'MEDITACIÓN',
     rating: 4.6,
@@ -151,6 +162,108 @@ export const BUSINESSES: Business[] = [
     priceUnit: 'planes',
     distance: '2.0 millas',
     location: { lat: 37.7599, lng: -122.4276, address: 'Downtown Sanctuary' }
+  },
+  {
+    id: '7',
+    name: 'La Boquería Central',
+    category: 'Gastronomía',
+    subCategory: 'TAPAS',
+    tag2: 'TRADICIONAL',
+    rating: 4.8,
+    reviewsCount: 450,
+    description: 'Auténtica cocina mediterránea con los ingredientes más frescos del mercado.',
+    shortDescription: 'Tapas de autor y vinos seleccionados en un ambiente vibrante.',
+    image: 'https://images.unsplash.com/photo-1515467873231-15362ce09503?auto=format&fit=crop&q=80&w=800',
+    priceLevel: '$$',
+    priceRange: '$25 – $80',
+    priceUnit: 'por persona',
+    distance: '0.4 millas',
+    location: { lat: 37.7749, lng: -122.4194, address: 'Arts District' }
+  },
+  {
+    id: '8',
+    name: 'Urban Tech Hub',
+    category: 'Servicios',
+    subCategory: 'COWORKING',
+    tag2: 'EMPRENDEDORES',
+    rating: 4.7,
+    reviewsCount: 120,
+    description: 'Espacios de trabajo colaborativo diseñados para la innovación.',
+    shortDescription: 'Coworking premium con internet de alta velocidad y café ilimitado.',
+    image: 'https://images.unsplash.com/photo-1527192491265-7e15c55b1ed2?auto=format&fit=crop&q=80&w=800',
+    priceLevel: '$$',
+    priceRange: '$15 – $300',
+    priceUnit: 'planes',
+    distance: '1.1 millas',
+    location: { lat: 37.7858, lng: -122.4064, address: 'Tech Plaza' }
+  },
+  {
+    id: '9',
+    name: 'Starlight Cinema',
+    category: 'Ocio',
+    subCategory: 'ENTRETENIMIENTO',
+    tag2: 'CLÁSICOS',
+    rating: 4.9,
+    reviewsCount: 850,
+    description: 'Vive el cine como nunca antes en nuestra sala boutique vintage.',
+    shortDescription: 'Cine de autor y clásicos restaurados con sonido Dolby Atmos.',
+    image: 'https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&q=80&w=800',
+    priceLevel: '$',
+    priceRange: '$12 – $20',
+    priceUnit: 'ticket',
+    distance: '2.2 millas',
+    location: { lat: 37.7599, lng: -122.4376, address: 'Sunset Blvd' }
+  },
+  {
+    id: '10',
+    name: 'The Vintage Boutique',
+    category: 'Compras',
+    subCategory: 'MODA',
+    tag2: 'SOSTENIBLE',
+    rating: 4.6,
+    reviewsCount: 95,
+    description: 'Curaduría exclusiva de ropa vintage y accesorios únicos.',
+    shortDescription: 'Moda sostenible y piezas de diseño con historia.',
+    image: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&q=80&w=800',
+    priceLevel: '$$',
+    priceRange: '$30 – $200',
+    priceUnit: 'prenda',
+    distance: '0.5 millas',
+    location: { lat: 37.7749, lng: -122.4212, address: 'Mission St' }
+  },
+  {
+    id: '11',
+    name: 'Luna Spa & Wellness',
+    category: 'Bienestar',
+    subCategory: 'RELAJACIÓN',
+    tag2: 'MASAJES',
+    rating: 5.0,
+    reviewsCount: 230,
+    description: 'Un refugio de paz diseñado para armonizar tu cuerpo y mente.',
+    shortDescription: 'Tratamientos faciales, masajes terapéuticos y rituales de bienestar.',
+    image: 'https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&q=80&w=800',
+    priceLevel: '$$$',
+    priceRange: '$90 – $250',
+    priceUnit: 'sesión',
+    distance: '1.8 millas',
+    location: { lat: 37.7858, lng: -122.4164, address: 'Garden Heights' }
+  },
+  {
+    id: '12',
+    name: 'Arts Convention Center',
+    category: 'Eventos',
+    subCategory: 'CONFERENCIAS',
+    tag2: 'CULTURAL',
+    rating: 4.5,
+    reviewsCount: 1500,
+    description: 'El espacio ideal para ferias, conferencias y exhibiciones de arte.',
+    shortDescription: 'Instalaciones modernas para eventos corporativos y culturales.',
+    image: 'https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?auto=format&fit=crop&q=80&w=800',
+    priceLevel: '$$$',
+    priceRange: '$500 – $5000',
+    priceUnit: 'alquiler',
+    distance: '3.5 millas',
+    location: { lat: 37.7749, lng: -122.4312, address: 'Civic Center' }
   }
 ];
 
@@ -237,3 +350,10 @@ export const EVENTS: LocalEvent[] = [
     description: 'Intercambia semillas, compra productos residuo cero y conoce a activistas...'
   }
 ];
+
+export const CATEGORIES = [
+    { name: 'Bazares locales', color: 'bg-[#8FB7B0]' },
+    { name: 'Arte y artesanía', color: 'bg-[#FFCCAC]' },
+    { name: 'Música en vivo', color: 'bg-[#8FB7B0]' },
+    { name: 'Gastronomía', color: 'bg-[#FFCCAC]' }
+  ];

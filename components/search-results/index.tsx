@@ -1,9 +1,17 @@
-import React from 'react';
+"use client";
+
+import React, { Suspense } from 'react';
+import { useSearchParams } from 'next/navigation';
 import { BUSINESSES } from '@/constants';
 import { BusinessCard } from '@/components/business-card';
 
-function SearchResults() {
-  const displayBusinesses = BUSINESSES.filter(biz => biz.category === 'Fitness y Bienestar');
+function SearchResultsContent() {
+  const searchParams = useSearchParams();
+  const category = searchParams.get('category');
+  
+  const displayBusinesses = category 
+    ? BUSINESSES.filter(biz => biz.category === category)
+    : BUSINESSES;
 
   return (
     <div className="min-h-screen bg-white">
@@ -12,10 +20,12 @@ function SearchResults() {
           <span className="material-symbols-outlined text-[20px]">tune</span>
           Todos los Filtros
         </button>
-        <div className="flex items-center gap-2 px-6 py-2.5 rounded-full bg-[#2D9C8D]/10 text-[#2D9C8D] text-sm font-bold whitespace-nowrap border border-[#2D9C8D]/20">
-          Fitness y Bienestar
-          <span className="material-symbols-outlined text-[18px] cursor-pointer">close</span>
-        </div>
+        {category && (
+          <div className="flex items-center gap-2 px-6 py-2.5 rounded-full bg-[#2D9C8D]/10 text-[#2D9C8D] text-sm font-bold whitespace-nowrap border border-[#2D9C8D]/20">
+            {category}
+            <span className="material-symbols-outlined text-[18px] cursor-pointer">close</span>
+          </div>
+        )}
         {['Rango de Precio', 'Distancia', 'Abierto Ahora'].map((filter) => (
           <button key={filter} className="px-6 py-2.5 rounded-full bg-white border border-slate-200 text-slate-500 text-sm font-bold hover:bg-slate-50 transition-all whitespace-nowrap">
             {filter}
@@ -27,7 +37,7 @@ function SearchResults() {
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-6 mb-12">
           <div>
             <p className="text-slate-400 text-xs font-bold uppercase tracking-wider mb-2">Resultados en San Francisco</p>
-            <h1 className="text-4xl lg:text-5xl font-black text-[#1F4D47]">Fitness y Bienestar</h1>
+            <h1 className="text-4xl lg:text-5xl font-black text-[#1F4D47]">{category || 'Todos los Negocios'}</h1>
           </div>
           <button className="flex items-center gap-2 text-[#2D9C8D] text-sm font-bold hover:underline mb-1 whitespace-nowrap">
             Ordenar por Relevancia <span className="material-symbols-outlined text-lg">expand_more</span>
@@ -35,9 +45,15 @@ function SearchResults() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
-          {displayBusinesses.map((biz) => (
-            <BusinessCard key={biz.id} business={biz} />
-          ))}
+          {displayBusinesses.length > 0 ? (
+            displayBusinesses.map((biz) => (
+              <BusinessCard key={biz.id} business={biz} />
+            ))
+          ) : (
+            <div className="col-span-full py-20 text-center">
+              <p className="text-slate-400 font-medium text-lg">No se encontraron negocios en esta categoría.</p>
+            </div>
+          )}
         </div>
         <div className="flex justify-center items-center gap-3">
           <button className="w-12 h-12 rounded-2xl border border-slate-100 flex items-center justify-center text-slate-400 hover:bg-slate-50 transition-all">
@@ -54,6 +70,14 @@ function SearchResults() {
         </div>
       </div>
     </div>
+  );
+}
+
+function SearchResults() {
+  return (
+    <Suspense fallback={<div>Cargando resultados...</div>}>
+      <SearchResultsContent />
+    </Suspense>
   );
 }
 

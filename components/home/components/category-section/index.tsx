@@ -60,13 +60,15 @@ function CategorySection() {
             {CATEGORIES.map((cat, index) => (
               <SwiperSlide key={cat.name}>
                 {({ isActive }) => (
-                  <CategoryCard 
-                    icon={cat.icon} 
-                    name={cat.name} 
-                    color={cat.color} 
-                    iconColor={cat.iconColor} 
-                    isActive={isActive}
-                  />
+                  <Link href={`/search?category=${encodeURIComponent(cat.name)}`} className="block">
+                    <CategoryCard 
+                      icon={cat.icon} 
+                      name={cat.name} 
+                      color={cat.color} 
+                      iconColor={cat.iconColor} 
+                      isActive={isActive}
+                    />
+                  </Link>
                 )}
               </SwiperSlide>
             ))}

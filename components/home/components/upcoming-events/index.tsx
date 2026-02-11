@@ -18,7 +18,11 @@ function UpcomingEvents() {
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16">
           {EVENTS.map(event => (
-            <div key={event.id} className="bg-white p-5 rounded-3xl shadow-sm border border-slate-50 flex gap-5 group hover:shadow-xl transition-all">
+            <Link 
+              key={event.id} 
+              href={`/events/${event.id}`}
+              className="bg-white p-5 rounded-3xl shadow-sm border border-slate-50 flex gap-5 group hover:shadow-xl transition-all cursor-pointer"
+            >
               <div className={`flex-shrink-0 w-24 h-28 ${event.month === 'OCT' ? 'bg-baby-blue' : 'bg-peach'} text-slate-700 rounded-2xl flex flex-col items-center justify-center shadow-sm`}>
                 <span className="text-xs font-black uppercase tracking-widest">{event.month}</span>
                 <span className="text-3xl font-black">{event.day}</span>
@@ -34,7 +38,7 @@ function UpcomingEvents() {
                   <span>{event.locationName}</span>
                 </div>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </section>
