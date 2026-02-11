@@ -28,8 +28,8 @@ function CategorySection() {
         <div className="relative w-full overflow-hidden px-4 md:px-0">
           <Swiper
             modules={[Navigation, Pagination, EffectCoverflow]}
-            spaceBetween={20}
-            slidesPerView={'auto'}
+            spaceBetween={0}
+            slidesPerView={1.2}
             centeredSlides={true}
             initialSlide={2}
             loop={true}
@@ -50,30 +50,27 @@ function CategorySection() {
               rotate: 0,
               stretch: 0,
               depth: 100,
-              modifier: 1,
+              modifier: 2,
               slideShadows: false,
             }}
             breakpoints={{
               640: { 
                 slidesPerView: 2,
-                spaceBetween: 30,
-                coverflowEffect: { modifier: 1.5 }
+                coverflowEffect: { modifier: 2.5 }
               },
               1024: { 
                 slidesPerView: 3,
-                spaceBetween: 30,
-                coverflowEffect: { modifier: 2 }
+                coverflowEffect: { modifier: 2.5 }
               },
               1400: { 
                 slidesPerView: 5,
-                spaceBetween: 40,
                 coverflowEffect: { modifier: 2.5 }
               },
             }}
             className="categories-swiper md:!px-24"
           >
             {CATEGORIES_BUSINESS.map((cat, index) => (
-              <SwiperSlide key={cat.name} className="!w-[280px] md:!w-auto">
+              <SwiperSlide key={cat.name}>
                 {({ isActive }) => (
                   <Link href={`/search?category=${encodeURIComponent(cat.name)}`} className="block">
                     <CategoryCard 

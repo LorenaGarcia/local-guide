@@ -11,7 +11,7 @@ interface CategoryCardProps {
 function CategoryCard({ icon, name, color, iconColor, isActive }: CategoryCardProps) {
   return (
     <div className={`
-      relative bg-white rounded-[3rem] transition-all duration-700 flex flex-col items-center justify-center w-full
+      relative bg-white rounded-[3rem] transition-all duration-700 flex flex-col items-center justify-center w-full min-w-[200px]
       ${isActive 
         ? 'h-[210px] shadow-[0_40px_60px_-10px_rgba(0,0,0,0.12)] scale-100' 
         : 'h-[200px] shadow-[0_10px_20px_-10px_rgba(0,0,0,0.03)] opacity-40 scale-90'}
