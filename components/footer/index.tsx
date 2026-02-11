@@ -1,7 +1,3 @@
-
-
-"use client";
-
 import React from 'react';
 
 function Footer() {
@@ -54,11 +50,6 @@ function Footer() {
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto border-t border-slate-50 dark:border-slate-800 pt-8">
-        <p className="text-center text-[#708E8A] text-xs">
-          © 2023 Directorio Local. Creado con personalidad Tierra y Océano.
-        </p>
-      </div>
     </footer>
   );
 }
