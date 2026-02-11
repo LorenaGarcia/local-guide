@@ -1,8 +1,9 @@
 "use client";
 
 import React, { useState } from 'react';
-import { EVENTS, CATEGORIES } from '@/constants';
+import { EVENTS, CATEGORIES_EVENTS } from '@/constants';
 import { EventCard } from './event-card';
+import { CategoryFilter } from '@/components/category-filter';
 
 function EventList() {
   const [selectedCategory, setSelectedCategory] = useState<string>('Todos');
@@ -27,23 +28,11 @@ function EventList() {
 
 
       <div className="flex flex-wrap items-center justify-between gap-6 mb-12">
-        <div className="flex gap-2 overflow-x-auto pb-2 no-scrollbar">
-          <button 
-            onClick={() => setSelectedCategory('Todos')}
-            className={`${selectedCategory === 'Todos' ? 'bg-[#2D4552] text-white' : 'bg-white border border-slate-50 text-slate-400 hover:text-slate-600'} px-8 py-3 rounded-full text-sm font-bold whitespace-nowrap transition-all`}
-          >
-            Todos los eventos
-          </button>
-          {CATEGORIES.map(cat => (
-            <button 
-              key={cat.name} 
-              onClick={() => setSelectedCategory(cat.name)}
-              className={`${selectedCategory === cat.name ? 'bg-[#2D4552] text-white' : 'bg-white border border-slate-50 text-slate-400 hover:text-slate-600 hover:border-slate-200'} px-6 py-3 rounded-full text-sm font-bold transition-all whitespace-nowrap`}
-            >
-              {cat.name}
-            </button>
-          ))}
-        </div>
+        <CategoryFilter 
+          categories={CATEGORIES_EVENTS} 
+          selectedCategory={selectedCategory} 
+          onCategorySelect={setSelectedCategory} 
+        />
         <div className="flex gap-3">
           <button className="flex items-center gap-2 bg-white px-6 py-3 rounded-2xl text-sm font-bold border border-slate-50 text-slate-600 shadow-sm">
             <span className="material-symbols-outlined text-lg">tune</span> Filtros

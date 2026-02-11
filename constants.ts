@@ -351,7 +351,7 @@ export const EVENTS: LocalEvent[] = [
   }
 ];
 
-export const CATEGORIES = [
+export const CATEGORIES_EVENTS = [
     { name: 'Bazares locales', color: 'bg-[#8FB7B0]' },
     { name: 'Arte y artesanía', color: 'bg-[#FFCCAC]' },
     { name: 'Música en vivo', color: 'bg-[#8FB7B0]' },

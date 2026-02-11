@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, EffectCoverflow } from 'swiper/modules';
-import { CATEGORIES } from '../category-card/category-card.utils';
+import { CATEGORIES_BUSINESS } from '../category-card/category-card.utils';
 import { CategoryCard } from '../category-card';
 import { BUSINESSES } from '@/constants';
 import { BusinessCard } from '@/components/business-card';
@@ -57,7 +57,7 @@ function CategorySection() {
             }}
             className="categories-swiper"
           >
-            {CATEGORIES.map((cat, index) => (
+            {CATEGORIES_BUSINESS.map((cat, index) => (
               <SwiperSlide key={cat.name}>
                 {({ isActive }) => (
                   <Link href={`/search?category=${encodeURIComponent(cat.name)}`} className="block">
