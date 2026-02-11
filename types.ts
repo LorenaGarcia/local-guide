@@ -10,8 +10,12 @@ export interface Business {
   image: string;
   isFeatured?: boolean;
   priceLevel: string;
+  priceRange?: string;
+  priceUnit?: string;
+  shortDescription?: string;
   distance?: string;
   tags?: string[];
+  tag2?: string;
   location?: {
     lat: number;
     lng: number;

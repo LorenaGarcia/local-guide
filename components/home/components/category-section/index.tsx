@@ -7,6 +7,7 @@ import { Navigation, Pagination, EffectCoverflow } from 'swiper/modules';
 import { CATEGORIES } from '../category-card/category-card.utils';
 import { CategoryCard } from '../category-card';
 import { BUSINESSES } from '@/constants';
+import { BusinessCard } from '@/components/business-card';
 
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -114,38 +115,9 @@ function CategorySection() {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-          <Link href={`/business/${BUSINESSES[0].id}`} className="md:col-span-2 md:row-span-2 group relative rounded-[2.5rem] overflow-hidden shadow-sm hover:shadow-2xl transition-all border border-slate-100 min-h-[500px]">
-            <div className="absolute inset-0 bg-cover bg-center transition-transform duration-1000 group-hover:scale-105" style={{ backgroundImage: `url(${BUSINESSES[0].image})` }}></div>
-            <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/20 to-transparent"></div>
-            <div className="absolute top-8 right-8 bg-butterscotch text-slate-800 px-4 py-2 rounded-full text-xs font-black uppercase tracking-widest shadow-lg">Destacado</div>
-            <div className="absolute bottom-0 left-0 p-10 w-full">
-              <div className="flex items-center gap-2 mb-4">
-                <span className="flex text-butter">
-                  {[...Array(5)].map((_, i) => <span key={i} className="material-symbols-outlined text-base fill-current">star</span>)}
-                </span>
-                <span className="text-white/80 text-sm font-bold">4.9 (240 reseñas)</span>
-              </div>
-              <h4 className="text-white text-4xl font-black mb-4">{BUSINESSES[0].name}</h4>
-              <p className="text-white/70 text-lg mb-8 max-w-md">{BUSINESSES[0].description}</p>
-              <button className="inline-block bg-white text-slate-800 px-8 py-4 rounded-2xl font-black text-sm hover:bg-baby-blue transition-all shadow-xl">
-                Ver Detalles
-              </button>
-            </div>
-          </Link>
-
-          {BUSINESSES.slice(1, 5).map(biz => (
-            <Link href={`/business/${biz.id}`} key={biz.id} className="group bg-white rounded-3xl overflow-hidden border border-slate-100 shadow-sm hover:shadow-xl transition-all">
-              <div className="h-48 bg-cover bg-center group-hover:scale-105 transition-transform duration-500" style={{ backgroundImage: `url(${biz.image})` }}></div>
-              <div className="p-6">
-                <div className="flex justify-between items-start mb-2">
-                  <h5 className="font-black text-slate-800 truncate text-lg">{biz.name}</h5>
-                  <span className="text-slate-800 bg-butter px-2 py-1 rounded-lg text-xs font-black">{biz.rating}</span>
-                </div>
-                <p className="text-xs text-slate-400 font-bold mb-4 uppercase tracking-widest">{biz.category} • {biz.subCategory}</p>
-                <p className="text-sm text-slate-500 font-medium line-clamp-2 leading-relaxed">{biz.description}</p>
-              </div>
-            </Link>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {BUSINESSES.slice(1, 4).map((biz) => (
+            <BusinessCard key={biz.id} business={biz} />
           ))}
         </div>
       </section>
