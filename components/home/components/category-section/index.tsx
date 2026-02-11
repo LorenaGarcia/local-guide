@@ -25,14 +25,17 @@ function CategorySection() {
           <p className="text-slate-400 font-medium text-xl">Servicios locales seleccionados para ti</p>
         </div>
 
-        <div className="relative px-4 md:px-24">
+        <div className="relative w-full overflow-hidden px-4 md:px-0">
           <Swiper
             modules={[Navigation, Pagination, EffectCoverflow]}
-            spaceBetween={0}
-            slidesPerView={1.2}
+            spaceBetween={20}
+            slidesPerView={'auto'}
             centeredSlides={true}
             initialSlide={2}
             loop={true}
+            observer={true}
+            observeParents={true}
+            watchSlidesProgress={true}
             onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
             navigation={{
               nextEl: '.swiper-button-next-custom',
@@ -47,27 +50,30 @@ function CategorySection() {
               rotate: 0,
               stretch: 0,
               depth: 100,
-              modifier: 1.5,
+              modifier: 1,
               slideShadows: false,
             }}
             breakpoints={{
               640: { 
                 slidesPerView: 2,
-                coverflowEffect: { modifier: 2 }
+                spaceBetween: 30,
+                coverflowEffect: { modifier: 1.5 }
               },
               1024: { 
                 slidesPerView: 3,
-                coverflowEffect: { modifier: 2.5 }
+                spaceBetween: 30,
+                coverflowEffect: { modifier: 2 }
               },
               1400: { 
                 slidesPerView: 5,
+                spaceBetween: 40,
                 coverflowEffect: { modifier: 2.5 }
               },
             }}
-            className="categories-swiper"
+            className="categories-swiper md:!px-24"
           >
             {CATEGORIES_BUSINESS.map((cat, index) => (
-              <SwiperSlide key={cat.name}>
+              <SwiperSlide key={cat.name} className="!w-[280px] md:!w-auto">
                 {({ isActive }) => (
                   <Link href={`/search?category=${encodeURIComponent(cat.name)}`} className="block">
                     <CategoryCard 
