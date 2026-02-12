@@ -1,4 +1,4 @@
-import React, { useState, use } from 'react';
+import React from 'react';
 import {BusinessDetail} from '@/components/bussines-detail';
 
 export default function BusinessDetailPage({ params }: { params: Promise<{ id: string }> }) {
