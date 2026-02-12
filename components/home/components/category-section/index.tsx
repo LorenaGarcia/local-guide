@@ -19,13 +19,13 @@ function CategorySection() {
 
   return (
    <>
-   <section className="mb-32 px-2 relative">
-        <div className="text-center mb-16">
+    <section className="mb-32 relative overflow-hidden">
+        <div className="text-center mb-16 px-4">
           <h3 className="text-5xl font-black tracking-tight text-[#1E293B] mb-4">Explora por Categoría</h3>
           <p className="text-slate-400 font-medium text-xl">Servicios locales seleccionados para ti</p>
         </div>
 
-        <div className="relative w-full overflow-hidden px-4 md:px-0">
+        <div className="relative w-full">
           <Swiper
             modules={[Navigation, Pagination, EffectCoverflow]}
             spaceBetween={0}
@@ -50,24 +50,28 @@ function CategorySection() {
               rotate: 0,
               stretch: 0,
               depth: 100,
-              modifier: 2,
+              modifier: 2.5,
               slideShadows: false,
             }}
             breakpoints={{
               640: { 
                 slidesPerView: 2,
-                coverflowEffect: { modifier: 2.5 }
+                coverflowEffect: { stretch: -5, modifier: 2 }
               },
               1024: { 
                 slidesPerView: 3,
-                coverflowEffect: { modifier: 2.5 }
+                coverflowEffect: { stretch: -5, modifier: 2.5 }
               },
               1400: { 
                 slidesPerView: 5,
-                coverflowEffect: { modifier: 2.5 }
+                coverflowEffect: { stretch: -25, modifier: 3 }
               },
+              1800: {
+                slidesPerView: 5,
+                coverflowEffect: { stretch: -30, modifier: 3.5 }
+              }
             }}
-            className="categories-swiper md:!px-24"
+            className="categories-swiper !px-4 md:!px-0"
           >
             {CATEGORIES_BUSINESS.map((cat, index) => (
               <SwiperSlide key={cat.name}>
@@ -87,10 +91,10 @@ function CategorySection() {
           </Swiper>
 
       
-          <button className="swiper-button-prev-custom absolute left-0 md:left-10 top-1/2 -translate-y-1/2 z-20 w-10 h-10 md:w-14 md:h-14 bg-[#2D9C8D] rounded-full flex items-center justify-center text-white shadow-xl hover:scale-110 active:scale-95 transition-all">
+          <button className="swiper-button-prev-custom absolute left-4 md:left-8 top-1/2 -translate-y-1/2 z-20 w-10 h-10 md:w-14 md:h-14 bg-[#2D9C8D] rounded-full flex items-center justify-center text-white shadow-xl hover:scale-110 active:scale-95 transition-all">
             <span className="material-symbols-outlined text-2xl md:text-3xl font-bold">chevron_left</span>
           </button>
-          <button className="swiper-button-next-custom absolute right-0 md:right-10 top-1/2 -translate-y-1/2 z-20 w-10 h-10 md:w-14 md:h-14 bg-[#2D9C8D] rounded-full flex items-center justify-center text-white shadow-xl hover:scale-110 active:scale-95 transition-all">
+          <button className="swiper-button-next-custom absolute right-4 md:right-8 top-1/2 -translate-y-1/2 z-20 w-10 h-10 md:w-14 md:h-14 bg-[#2D9C8D] rounded-full flex items-center justify-center text-white shadow-xl hover:scale-110 active:scale-95 transition-all">
             <span className="material-symbols-outlined text-2xl md:text-3xl font-bold">chevron_right</span>
           </button>
 

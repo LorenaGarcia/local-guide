@@ -6,6 +6,7 @@ import { BUSINESSES } from '@/constants';
 import { BusinessCard } from '@/components/business-card';
 import { CategoryFilter } from '@/components/category-filter';
 import {CATEGORIES_BUSINESS} from '@/components/home/components/category-card/category-card.utils'
+import { Pagination } from '@/components/pagination';
 
 function SearchResultsContent() {
   const searchParams = useSearchParams();
@@ -64,46 +65,11 @@ function SearchResultsContent() {
           )}
         </div>
 
-        {totalPages > 1 && (
-          <div className="flex justify-center items-center gap-3">
-            <button 
-              onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
-              disabled={currentPage === 1}
-              className={`w-12 h-12 rounded-2xl border border-slate-100 flex items-center justify-center transition-all ${
-                currentPage === 1 ? 'text-slate-200 cursor-not-allowed' : 'text-slate-400 hover:bg-slate-50'
-              }`}
-            >
-              <span className="material-symbols-outlined">chevron_left</span>
-            </button>
-            
-            {[...Array(totalPages)].map((_, i) => {
-              const pageNum = i + 1;
-              return (
-                <button
-                  key={pageNum}
-                  onClick={() => setCurrentPage(pageNum)}
-                  className={`w-12 h-12 rounded-2xl font-black text-sm flex items-center justify-center transition-all ${
-                    currentPage === pageNum 
-                      ? 'bg-[#2D9C8D] text-white shadow-lg shadow-[#2D9C8D]/20' 
-                      : 'hover:bg-slate-50 text-slate-500'
-                  }`}
-                >
-                  {pageNum}
-                </button>
-              );
-            })}
-
-            <button 
-              onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))}
-              disabled={currentPage === totalPages}
-              className={`w-12 h-12 rounded-2xl border border-slate-100 flex items-center justify-center transition-all ${
-                currentPage === totalPages ? 'text-slate-200 cursor-not-allowed' : 'text-slate-400 hover:bg-slate-50'
-              }`}
-            >
-              <span className="material-symbols-outlined">chevron_right</span>
-            </button>
-          </div>
-        )}
+        <Pagination 
+          currentPage={currentPage} 
+          totalPages={totalPages} 
+          onPageChange={setCurrentPage} 
+        />
       </div>
     </div>
   );

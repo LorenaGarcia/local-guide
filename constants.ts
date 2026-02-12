@@ -271,13 +271,13 @@ export const EVENTS: LocalEvent[] = [
   {
     id: 'e1',
     title: 'Neon Night Bazaar: Arte y Ritmos',
-    date: 'Sáb, 24 Oct',
-    month: 'OCT',
+    date: 'Sáb, 24 Marzo',
+    month: 'MAR',
     day: '24',
     time: '18:00 - 23:00',
     category: 'Bazares locales',
     locationName: 'Pabellón Central',
-    image: 'https://images.unsplash.com/photo-1555436169-20e93ea9a7ff?auto=format&fit=crop&q=80&w=1200',
+    image: 'https://www.bkkkids.com/wp-content/uploads/2021/03/The-Neon-Night-Bazaar.jpg',
     isTrending: true,
     isFeatured: true,
     attendeesCount: 156,
@@ -300,35 +300,35 @@ export const EVENTS: LocalEvent[] = [
   {
     id: 'e2',
     title: 'Cuarteto de Cuerdas: Atardecer en el Jardín',
-    date: 'Mié, 28 Oct',
-    month: 'OCT',
+    date: 'Mié, 28 Marzo',
+    month: 'MAR',
     day: '28',
     time: '19:30 - 21:00',
     category: 'Música en vivo',
     locationName: 'Jardin Botánico',
-    image: 'https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&q=80&w=800',
+    image: 'https://inba.gob.mx/multimedia/prensa/galerias/22105/22105-GAL-cuarteto_de_cuerdas_de_bellas_artes.png',
     attendeesCount: 45,
     description: 'Una velada íntima de Vivaldi y clásicos contemporáneos en los jardines botánicos...'
   },
   {
     id: 'e3',
     title: 'Cerámica Consciente y Mañana de Matcha',
-    date: 'Vie, 30 Oct',
-    month: 'OCT',
+    date: 'Vie, 30 Marzo',
+    month: 'MAR',
     day: '30',
     time: '10:00 - 13:00',
     category: 'Arte y Artesanía',
     locationName: 'Clay Studio Lab',
-    image: 'https://images.unsplash.com/photo-1493106641515-6b563ad35f1f?auto=format&fit=crop&q=80&w=800',
+    image: 'https://images.adsttc.com/media/images/6656/92a0/652f/7801/9d7c/cbfa/large_jpg/taller-ceramico-liza-crea-equals-plus-x_22.jpg?1716949694',
     attendeesCount: 24,
     description: 'Relájate y aprende el arte de la cerámica manual mientras disfrutas de matcha...'
   },
   {
     id: 'e4',
     title: 'Gran Festival Gastronómico Local',
-    date: 'Jue, 05 Nov',
-    month: 'NOV',
-    day: '05',
+    date: 'Jue, 26 Feb',
+    month: 'FEB',
+    day: '26',
     time: '12:00 - 20:00',
     category: 'Gastronomía',
     locationName: 'Plaza Mayor',
@@ -339,15 +339,67 @@ export const EVENTS: LocalEvent[] = [
   {
     id: 'e5',
     title: 'Mañana de Vida Sostenible',
-    date: 'Sáb, 07 Nov',
-    month: 'NOV',
-    day: '07',
+    date: 'Sáb, 28 Feb',
+    month: 'FEB',
+    day: '28',
     time: '09:00 - 14:00',
     category: 'Bazares locales',
     locationName: 'Centro Verde',
-    image: 'https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&q=80&w=800',
+    image: 'https://el-pais.brightspotcdn.com/uploads/2017/09/10/59b4c28da2a7b.jpeg',
     attendeesCount: 80,
     description: 'Intercambia semillas, compra productos residuo cero y conoce a activistas...'
+  },
+  {
+    id: 'e6',
+    title: 'Taller de Acuarela al Aire Libre',
+    date: 'Sáb, 28 Feb',
+    month: 'FEB',
+    day: '28',
+    time: '11:00 - 13:30',
+    category: 'Arte y artesanía',
+    locationName: 'Parque Central',
+    image: 'https://fundacioncb.es/wp-content/uploads/2025/03/high-angle-painter-with-painting-elements_1024x1024-1.jpg',
+    attendeesCount: 15,
+    description: 'Aprende técnicas básicas de acuarela rodeado de naturaleza. Incluye materiales.'
+  },
+  {
+    id: 'e7',
+    title: 'Noche de Jazz & Tapas',
+    date: 'Vie, 20 Nov',
+    month: 'NOV',
+    day: '20',
+    time: '20:00 - 23:00',
+    category: 'Música en vivo',
+    locationName: 'The Blue Note Cafe',
+    image: 'https://offloadmedia.feverup.com/cdmxsecreta.com/wp-content/uploads/2024/04/23140307/jazz-cdmx.jpg',
+    attendeesCount: 50,
+    description: 'Disfruta de una selección de jazz clásico mientras degustas tapas gourmet locales.'
+  },
+  {
+    id: 'e8',
+    title: 'Feria del Libro Independiente',
+    date: 'Sáb, 21 Nov',
+    month: 'NOV',
+    day: '21',
+    time: '10:00 - 19:00',
+    category: 'Arte y artesanía',
+    locationName: 'Centro Cultural',
+    image: 'https://images.unsplash.com/photo-1495446815901-a7297e633e8d?auto=format&fit=crop&q=80&w=800',
+    attendeesCount: 120,
+    description: 'Descubre nuevas editoriales y autores locales en esta feria dedicada a las letras.'
+  },
+  {
+    id: 'e9',
+    title: 'Yoga & Meditación al Amanecer',
+    date: 'Dom, 22 Nov',
+    month: 'NOV',
+    day: '22',
+    time: '07:30 - 09:00',
+    category: 'Salud',
+    locationName: 'Terraza Sol',
+    image: 'https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&q=80&w=800',
+    attendeesCount: 30,
+    description: 'Comienza el domingo con energía renovada en nuestra sesión de yoga frente al mar.'
   }
 ];
 
@@ -357,3 +409,8 @@ export const CATEGORIES_EVENTS = [
     { name: 'Música en vivo', color: 'bg-[#8FB7B0]' },
     { name: 'Gastronomía', color: 'bg-[#FFCCAC]' }
   ];
+
+export const MONTH_MAP: { [key: string]: number } = {
+    'ENE': 0, 'FEB': 1, 'MAR': 2, 'ABR': 3, 'MAY': 4, 'JUN': 5,
+    'JUL': 6, 'AGO': 7, 'SEP': 8, 'OCT': 9, 'NOV': 10, 'DIC': 11
+  };
