@@ -2,10 +2,9 @@
 
 import React, { Suspense, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
-import { BUSINESSES } from '@/constants';
+import { BUSINESSES, CATEGORIES_BUSINESS } from '@/constants';
 import { BusinessCard } from '@/components/business-card';
 import { CategoryFilter } from '@/components/category-filter';
-import {CATEGORIES_BUSINESS} from '@/components/home/components/category-card/category-card.utils'
 import { Pagination } from '@/components/pagination';
 
 function SearchResultsContent() {

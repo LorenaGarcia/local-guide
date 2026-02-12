@@ -4,9 +4,8 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, EffectCoverflow } from 'swiper/modules';
-import { CATEGORIES_BUSINESS } from '../category-card/category-card.utils';
 import { CategoryCard } from '../category-card';
-import { BUSINESSES } from '@/constants';
+import { BUSINESSES, CATEGORIES_BUSINESS } from '@/constants';
 import { BusinessCard } from '@/components/business-card';
 
 import 'swiper/css';

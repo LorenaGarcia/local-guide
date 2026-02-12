@@ -1,8 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-
-import { NAV_LINKS } from './header.constants';
+import { NAV_LINKS } from '@/constants';
 
 function Header() {
     const pathname = usePathname();

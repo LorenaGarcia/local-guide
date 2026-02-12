@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from 'react';
-import { EVENTS, CATEGORIES_EVENTS } from '@/constants';
+import { EVENTS, CATEGORIES_EVENTS, MONTH_MAP } from '@/constants';
 import { EventCard } from './event-card';
 import { CategoryFilter } from '@/components/category-filter';
 import { Pagination } from '@/components/pagination';
@@ -19,17 +19,13 @@ function EventList() {
     setCurrentPage(1);
   };
 
-  const monthMap: { [key: string]: number } = {
-    'ENE': 0, 'FEB': 1, 'MAR': 2, 'ABR': 3, 'MAY': 4, 'JUN': 5,
-    'JUL': 6, 'AGO': 7, 'SEP': 8, 'OCT': 9, 'NOV': 10, 'DIC': 11
-  };
-
   const filteredEvents = EVENTS.filter(event => {
     const categoryMatch = selectedCategory === 'Todos' || event.category.toLowerCase() === selectedCategory.toLowerCase();
     
     let dateMatch = true;
     if (dateRange.start) {
-      const eventDate = new Date(2024, monthMap[event.month] || 0, parseInt(event.day));
+      const currentYear = new Date().getFullYear();
+      const eventDate = new Date(currentYear, MONTH_MAP[event.month] || 0, parseInt(event.day));
       if (dateRange.end) {
         dateMatch = eventDate >= dateRange.start && eventDate <= dateRange.end;
       } else {

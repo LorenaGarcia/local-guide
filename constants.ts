@@ -1,14 +1,14 @@
 
 import { Business, LocalEvent } from './types';
 
-export const COLORS = {
+const COLORS = {
   babyBlue: '#C1E1DC',
   peach: '#FFCCAC',
   butter: '#FFEB94',
   butterscotch: '#FDD475',
 };
 
-export const BUSINESSES: Business[] = [
+const BUSINESSES: Business[] = [
   {
     id: '1',
     name: 'Serene Pilates Studio',
@@ -267,7 +267,7 @@ export const BUSINESSES: Business[] = [
   }
 ];
 
-export const EVENTS: LocalEvent[] = [
+const EVENTS: LocalEvent[] = [
   {
     id: 'e1',
     title: 'Neon Night Bazaar: Arte y Ritmos',
@@ -403,14 +403,48 @@ export const EVENTS: LocalEvent[] = [
   }
 ];
 
-export const CATEGORIES_EVENTS = [
+const CATEGORIES_EVENTS = [
     { name: 'Bazares locales', color: 'bg-[#8FB7B0]' },
     { name: 'Arte y artesanía', color: 'bg-[#FFCCAC]' },
     { name: 'Música en vivo', color: 'bg-[#8FB7B0]' },
     { name: 'Gastronomía', color: 'bg-[#FFCCAC]' }
   ];
 
-export const MONTH_MAP: { [key: string]: number } = {
+const CATEGORIES_BUSINESS = [
+    { icon: 'restaurant', name: 'Gastronomía', color: '#FFF4E5', iconColor: '#E69138' },
+    { icon: 'fitness_center', name: 'Salud', color: '#E5F9F6', iconColor: '#45B3A2' },
+    { icon: 'local_mall', name: 'Compras', color: '#FFF9E5', iconColor: '#D4A017' },
+    { icon: 'business_center', name: 'Servicios', color: '#FFEEEB', iconColor: '#E06666' },
+    { icon: 'nightlife', name: 'Ocio', color: '#F1F5F9', iconColor: '#475569' },
+    { icon: 'calendar_today', name: 'Eventos', color: '#E5F6F3', iconColor: '#2D8B7A' },
+    { icon: 'spa', name: 'Bienestar', color: '#FDF2F8', iconColor: '#DB2777' },
+];
+
+const NAV_LINKS = [
+    { name: 'Explorar', path: '/' },
+    { name: 'Eventos', path: '/events' },
+    { name: 'Negocios', path: '/search' },
+  ];
+
+const MONTH_MAP: { [key: string]: number } = {
     'ENE': 0, 'FEB': 1, 'MAR': 2, 'ABR': 3, 'MAY': 4, 'JUN': 5,
     'JUL': 6, 'AGO': 7, 'SEP': 8, 'OCT': 9, 'NOV': 10, 'DIC': 11
   };
+
+const MONTHS = [
+    "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
+    "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"
+  ];
+
+const DAYS_OF_WEEK = ["LUN", "MAR", "MIÉ", "JUE", "VIE", "SÁB", "DOM"];
+
+const COMPANYS_SOCIAL_MEDIA = [
+              { icon: 'language', label: 'Sitio Web', color: 'bg-emerald-50 text-emerald-600', iconColor: 'text-emerald-500' },
+              { icon: 'photo_camera', label: 'Instagram', color: 'bg-orange-50 text-orange-600', iconColor: 'text-orange-500' },
+              { icon: 'public', label: 'Facebook', color: 'bg-blue-50 text-blue-600', iconColor: 'text-blue-500' },
+              { icon: 'forum', label: 'WhatsApp', color: 'bg-green-50 text-green-600', iconColor: 'text-green-500' }
+            ];
+
+export {COLORS, BUSINESSES, EVENTS, CATEGORIES_BUSINESS, CATEGORIES_EVENTS, COMPANYS_SOCIAL_MEDIA, NAV_LINKS, MONTH_MAP, MONTHS, DAYS_OF_WEEK}
+
+
