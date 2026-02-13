@@ -114,25 +114,16 @@ export default async function EventDetail({ params }: { params: Promise<{ id: st
           )}
 
           <section>
-            <h3 className="text-2xl font-black text-slate-800 mb-8">Ubicación exacta</h3>
-            <div className="relative h-[400px] rounded-[3rem] overflow-hidden shadow-sm border border-slate-100 mb-6">
-              <img 
-                src="https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?auto=format&fit=crop&q=80&w=1200" 
-                className="w-full h-full object-cover grayscale opacity-50"
-                alt="map simulation"
-              />
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="relative">
-                  <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-2xl relative z-10 animate-bounce">
-                    <span className="material-symbols-outlined text-[#FDD475] fill-current">location_on</span>
-                  </div>
-                  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-24 h-24 bg-[#FDD475]/20 rounded-full animate-ping"></div>
-                </div>
+            <h3 className="text-2xl font-black text-slate-800 mb-8">Ubicación</h3>
+            <div className="bg-white rounded-[4rem] border border-slate-100 p-8 md:p-16 shadow-sm flex items-center gap-10 mb-6">
+              <div className="w-24 h-24 rounded-full bg-[#F3F9F8] flex items-center justify-center shrink-0">
+                 <div className="w-16 h-16 rounded-full bg-[#E8F4F2] flex items-center justify-center">
+                    <span className="material-symbols-outlined text-[#2D9C8D] fill-current text-3xl">location_on</span>
+                 </div>
               </div>
-              
-              <div className="absolute bottom-8 left-8 bg-white/95 backdrop-blur-md p-6 rounded-[2rem] shadow-2xl border border-slate-100 max-w-sm">
-                <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1.5">Dirección</p>
-                <p className="text-slate-800 text-sm font-black leading-relaxed">
+              <div className="max-w-2xl">
+                <p className="text-[11px] font-black text-slate-300 uppercase tracking-[0.2em] mb-4">Dirección del evento</p>
+                <p className="text-[#1F4D47] text-2xl md:text-3xl font-black leading-tight">
                   {event.locationAddress || event.locationName}
                 </p>
               </div>

@@ -75,7 +75,7 @@ function CategorySection() {
             {CATEGORIES_BUSINESS.map((cat, index) => (
               <SwiperSlide key={cat.name}>
                 {({ isActive }) => (
-                  <Link href={`/search?category=${encodeURIComponent(cat.name)}`} className="block">
+                  <Link href={`/business?category=${encodeURIComponent(cat.name)}`} className="block">
                     <CategoryCard 
                       icon={cat.icon} 
                       name={cat.name} 

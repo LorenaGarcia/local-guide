@@ -29,7 +29,7 @@ const BUSINESSES: Business[] = [
     location: { 
       lat: 37.7749, 
       lng: -122.4194, 
-      address: '124 Boutique Row, Arts District, San Francisco' 
+      address: 'Paseos de Zakia Pte., 76269 Santiago de Querétaro, Qro.' 
     },
     gallery: [
       'https://images.squarespace-cdn.com/content/v1/67ac3737684f1d77a47bf50d/e65804c7-d531-464e-9e81-5b2b4c6e4563/Room1_004.jpg',
@@ -77,7 +77,7 @@ const BUSINESSES: Business[] = [
     priceUnit: 'al mes',
     distance: '1.2 millas',
     tags: ['24/7'],
-    location: { lat: 37.7858, lng: -122.4064, address: '567 Iron Way, San Francisco' },
+    location: { lat: 37.7858, lng: -122.4064, address: 'Paseos de Zakia Pte., 76269 Santiago de Querétaro, Qro.' },
     gallery: [
       'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_c2_f81ibC7KScZaQfqOQsB2tSMOwl4F-RQ&s',
       'https://franquiciashoy.com/img/blog/franquicias-en-mexico-Imgs-790x440-02.jpg',
@@ -127,7 +127,7 @@ const BUSINESSES: Business[] = [
     priceUnit: 'por sesión',
     distance: '3.0 millas',
     tags: ['ATENCIÓN PERSONAL'],
-    location: { lat: 37.7749, lng: -122.4312, address: 'Centro, Madrid' }
+    location: { lat: 37.7749, lng: -122.4312, address: 'Paseos de Zakia Pte., 76269 Santiago de Querétaro, Qro.' }
   },
   {
     id: '5',
@@ -284,7 +284,7 @@ const EVENTS: LocalEvent[] = [
     description: 'Vive la magia de la artesanía local bajo luces de neón. Más de 50 vendedores, sets de DJ...',
     fullDescription: 'Prepárate para una noche inolvidable donde la creatividad local cobra vida bajo una atmósfera eléctrica. El Neon Night Bazaar no es solo un mercado; es una experiencia inmersiva que celebra el talento de nuestra comunidad en un entorno de luces neón y arte urbano. En esta edición, hemos seleccionado a más de 50 expositores que presentan desde joyería contemporánea hasta piezas de arte reciclado. Disfruta de la mejor gastronomía local en nuestra zona de food trucks y déjate llevar por los ritmos de los mejores DJs de la escena independiente.',
     price: 'Gratis',
-    locationAddress: 'Av. Creatividad 450, Nave 12, Distrito de Diseño, Ciudad Capital.',
+    locationAddress: 'Paseos de Zakia Pte., 76269 Santiago de Querétaro, Qro.',
     organizer: {
       name: 'Colectivo Arte Urbano',
       image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&q=80&w=200'
@@ -306,6 +306,7 @@ const EVENTS: LocalEvent[] = [
     time: '19:30 - 21:00',
     category: 'Música en vivo',
     locationName: 'Jardin Botánico',
+    locationAddress: 'Paseos de Zakia Pte., 76269 Santiago de Querétaro, Qro.',
     image: 'https://inba.gob.mx/multimedia/prensa/galerias/22105/22105-GAL-cuarteto_de_cuerdas_de_bellas_artes.png',
     attendeesCount: 45,
     description: 'Una velada íntima de Vivaldi y clásicos contemporáneos en los jardines botánicos...'
@@ -319,6 +320,7 @@ const EVENTS: LocalEvent[] = [
     time: '10:00 - 13:00',
     category: 'Arte y Artesanía',
     locationName: 'Clay Studio Lab',
+    locationAddress: 'Paseos de Zakia Pte., 76269 Santiago de Querétaro, Qro.',
     image: 'https://images.adsttc.com/media/images/6656/92a0/652f/7801/9d7c/cbfa/large_jpg/taller-ceramico-liza-crea-equals-plus-x_22.jpg?1716949694',
     attendeesCount: 24,
     description: 'Relájate y aprende el arte de la cerámica manual mientras disfrutas de matcha...'
@@ -332,6 +334,7 @@ const EVENTS: LocalEvent[] = [
     time: '12:00 - 20:00',
     category: 'Gastronomía',
     locationName: 'Plaza Mayor',
+    locationAddress: 'Paseos de Zakia Pte., 76269 Santiago de Querétaro, Qro.',
     image: 'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&q=80&w=800',
     attendeesCount: 300,
     description: 'Una celebración de sabores regionales con más de 20 chefs locales y puestos de...'
@@ -345,6 +348,7 @@ const EVENTS: LocalEvent[] = [
     time: '09:00 - 14:00',
     category: 'Bazares locales',
     locationName: 'Centro Verde',
+    locationAddress: 'Paseos de Zakia Pte., 76269 Santiago de Querétaro, Qro.',
     image: 'https://el-pais.brightspotcdn.com/uploads/2017/09/10/59b4c28da2a7b.jpeg',
     attendeesCount: 80,
     description: 'Intercambia semillas, compra productos residuo cero y conoce a activistas...'
@@ -358,6 +362,7 @@ const EVENTS: LocalEvent[] = [
     time: '11:00 - 13:30',
     category: 'Arte y artesanía',
     locationName: 'Parque Central',
+    locationAddress: 'Paseos de Zakia Pte., 76269 Santiago de Querétaro, Qro.',
     image: 'https://fundacioncb.es/wp-content/uploads/2025/03/high-angle-painter-with-painting-elements_1024x1024-1.jpg',
     attendeesCount: 15,
     description: 'Aprende técnicas básicas de acuarela rodeado de naturaleza. Incluye materiales.'
@@ -371,6 +376,7 @@ const EVENTS: LocalEvent[] = [
     time: '20:00 - 23:00',
     category: 'Música en vivo',
     locationName: 'The Blue Note Cafe',
+    locationAddress: 'Paseos de Zakia Pte., 76269 Santiago de Querétaro, Qro.',
     image: 'https://offloadmedia.feverup.com/cdmxsecreta.com/wp-content/uploads/2024/04/23140307/jazz-cdmx.jpg',
     attendeesCount: 50,
     description: 'Disfruta de una selección de jazz clásico mientras degustas tapas gourmet locales.'
@@ -384,6 +390,7 @@ const EVENTS: LocalEvent[] = [
     time: '10:00 - 19:00',
     category: 'Arte y artesanía',
     locationName: 'Centro Cultural',
+    locationAddress: 'Paseos de Zakia Pte., 76269 Santiago de Querétaro, Qro.',
     image: 'https://images.unsplash.com/photo-1495446815901-a7297e633e8d?auto=format&fit=crop&q=80&w=800',
     attendeesCount: 120,
     description: 'Descubre nuevas editoriales y autores locales en esta feria dedicada a las letras.'
@@ -397,6 +404,7 @@ const EVENTS: LocalEvent[] = [
     time: '07:30 - 09:00',
     category: 'Salud',
     locationName: 'Terraza Sol',
+    locationAddress: 'Paseos de Zakia Pte., 76269 Santiago de Querétaro, Qro.',
     image: 'https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&q=80&w=800',
     attendeesCount: 30,
     description: 'Comienza el domingo con energía renovada en nuestra sesión de yoga frente al mar.'
@@ -423,7 +431,7 @@ const CATEGORIES_BUSINESS = [
 const NAV_LINKS = [
     { name: 'Explorar', path: '/' },
     { name: 'Eventos', path: '/events' },
-    { name: 'Negocios', path: '/search' },
+    { name: 'Negocios', path: '/business' },
   ];
 
 const MONTH_MAP: { [key: string]: number } = {
@@ -439,11 +447,11 @@ const MONTHS = [
 const DAYS_OF_WEEK = ["LUN", "MAR", "MIÉ", "JUE", "VIE", "SÁB", "DOM"];
 
 const COMPANYS_SOCIAL_MEDIA = [
-              { icon: 'language', label: 'Sitio Web', color: 'bg-emerald-50 text-emerald-600', iconColor: 'text-emerald-500' },
-              { icon: 'photo_camera', label: 'Instagram', color: 'bg-orange-50 text-orange-600', iconColor: 'text-orange-500' },
-              { icon: 'public', label: 'Facebook', color: 'bg-blue-50 text-blue-600', iconColor: 'text-blue-500' },
-              { icon: 'forum', label: 'WhatsApp', color: 'bg-green-50 text-green-600', iconColor: 'text-green-500' }
-            ];
+  { icon: 'language', label: 'Sitio Web', color: 'bg-emerald-50 text-emerald-600', iconColor: 'text-emerald-500' },
+  { icon: 'photo_camera', label: 'Instagram', color: 'bg-orange-50 text-orange-600', iconColor: 'text-orange-500' },
+  { icon: 'public', label: 'Facebook', color: 'bg-blue-50 text-blue-600', iconColor: 'text-blue-500' },
+  { icon: 'forum', label: 'WhatsApp', color: 'bg-green-50 text-green-600', iconColor: 'text-green-500' }
+];
 
 export {COLORS, BUSINESSES, EVENTS, CATEGORIES_BUSINESS, CATEGORIES_EVENTS, COMPANYS_SOCIAL_MEDIA, NAV_LINKS, MONTH_MAP, MONTHS, DAYS_OF_WEEK}
 
