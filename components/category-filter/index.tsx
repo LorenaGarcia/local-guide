@@ -1,14 +1,7 @@
 "use client";
 
 import React from 'react';
-
-interface CategoryFilterProps {
-  categories: { name: string }[];
-  selectedCategory: string;
-  onCategorySelect: (category: string) => void;
-  allLabel?: string;
-  className?: string;
-}
+import { CategoryFilterProps } from '@/types';
 
 export function CategoryFilter({ 
   categories, 

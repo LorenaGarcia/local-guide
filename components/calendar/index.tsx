@@ -2,12 +2,7 @@
 
 import React, { useState } from 'react';
 import { MONTHS, DAYS_OF_WEEK } from '@/constants';
-
-interface CalendarModalProps {
-  isOpen: boolean;
-  onClose: () => void;
-  onApplyRange: (start: Date | null, end: Date | null) => void;
-}
+import { CalendarModalProps } from '@/types';
 
 export function CalendarModal({ isOpen, onClose, onApplyRange }: CalendarModalProps) {
   const [currentDate, setCurrentDate] = useState(new Date()); 

@@ -1,19 +1,9 @@
 "use client";
 
 import React, { useState } from 'react';
-import { Business as BusinessType } from '@/types';
+import { BusinessProps } from '@/types';
 import { BusinessCard } from '@/components/business-card';
 import { Pagination } from '@/components/pagination';
-
-interface BusinessProps {
-  businesses: BusinessType[];
-  title?: string;
-  subtitle?: string;
-  itemsPerPage?: number;
-  currentPage?: number;
-  onPageChange?: (page: number) => void;
-  showPagination?: boolean;
-}
 
 function Business({ 
   businesses, 

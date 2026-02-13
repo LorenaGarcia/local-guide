@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from 'react';
+import React from 'react';
 import Link from 'next/link';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, EffectCoverflow } from 'swiper/modules';
@@ -14,7 +14,6 @@ import 'swiper/css/pagination';
 import 'swiper/css/effect-coverflow';
 
 function CategorySection() {
-  const [activeIndex, setActiveIndex] = useState(2);
 
   return (
    <>
@@ -35,7 +34,6 @@ function CategorySection() {
             observer={true}
             observeParents={true}
             watchSlidesProgress={true}
-            onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
             navigation={{
               nextEl: '.swiper-button-next-custom',
               prevEl: '.swiper-button-prev-custom',

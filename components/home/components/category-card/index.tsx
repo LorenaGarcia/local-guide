@@ -1,12 +1,5 @@
 import React from 'react';
-
-interface CategoryCardProps {
-  icon: string;
-  name: string;
-  color: string;
-  iconColor: string;
-  isActive?: boolean;
-}
+import { CategoryCardProps } from '@/types';
 
 function CategoryCard({ icon, name, color, iconColor, isActive }: CategoryCardProps) {
   return (

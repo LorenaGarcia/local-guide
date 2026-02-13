@@ -1,5 +1,5 @@
 
-export interface Business {
+interface Business {
   id: string;
   name: string;
   category: string;
@@ -52,7 +52,7 @@ export interface Business {
   }[];
 }
 
-export interface LocalEvent {
+interface LocalEvent {
   id: string;
   title: string;
   date: string;
@@ -80,5 +80,56 @@ export interface LocalEvent {
   }[];
   usefulInfo?: string[];
 }
+interface BusinessProps {
+  businesses: Business[];
+  title?: string;
+  subtitle?: string;
+  itemsPerPage?: number;
+  currentPage?: number;
+  onPageChange?: (page: number) => void;
+  showPagination?: boolean;
+}
 
-export type CategoryType = 'Restaurantes' | 'Belleza' | 'Mascotas' | 'Bienestar' | 'Eventos';
+interface BusinessCardProps {
+  business: Business;
+}
+
+interface CalendarModalProps {
+  isOpen: boolean;
+  onClose: () => void;
+  onApplyRange: (start: Date | null, end: Date | null) => void;
+}
+
+interface CategoryFilterProps {
+  categories: { name: string }[];
+  selectedCategory: string;
+  onCategorySelect: (category: string) => void;
+  allLabel?: string;
+  className?: string;
+}
+
+interface GalleryModalProps {
+  isOpen: boolean;
+  onClose: () => void;
+  images: string[];
+  businessName: string;
+  initialIndex?: number;
+}
+
+interface CategoryCardProps {
+  icon: string;
+  name: string;
+  color: string;
+  iconColor: string;
+  isActive?: boolean;
+}
+
+interface PaginationProps {
+  currentPage: number;
+  totalPages: number;
+  onPageChange: (page: number) => void;
+}
+
+ type CategoryType = 'Restaurantes' | 'Belleza' | 'Mascotas' | 'Bienestar' | 'Eventos';
+
+export type { Business, LocalEvent, CategoryType, BusinessProps, BusinessCardProps, CalendarModalProps, CategoryFilterProps, GalleryModalProps, CategoryCardProps, PaginationProps}

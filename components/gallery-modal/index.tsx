@@ -2,8 +2,9 @@
 
 import React, { useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Pagination, Thumbs, FreeMode, EffectFade } from 'swiper/modules';
 import type { Swiper as SwiperType } from 'swiper';
+import { Navigation, Thumbs, FreeMode, EffectFade } from 'swiper/modules';
+import { GalleryModalProps } from '@/types';
 
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -11,14 +12,6 @@ import 'swiper/css/pagination';
 import 'swiper/css/thumbs';
 import 'swiper/css/free-mode';
 import 'swiper/css/effect-fade';
-
-interface GalleryModalProps {
-  isOpen: boolean;
-  onClose: () => void;
-  images: string[];
-  businessName: string;
-  initialIndex?: number;
-}
 
 function GalleryModal({ isOpen, onClose, images, businessName, initialIndex = 0 }: GalleryModalProps) {
   const [thumbsSwiper, setThumbsSwiper] = useState<SwiperType | null>(null);

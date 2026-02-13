@@ -2,11 +2,8 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { Business } from '@/types';
+import { BusinessCardProps } from '@/types';
 
-interface BusinessCardProps {
-  business: Business;
-}
 
 function BusinessCard({ business }: BusinessCardProps) {
   const { id, image, name, rating, shortDescription, subCategory, tag2, priceRange, priceUnit } = business;
