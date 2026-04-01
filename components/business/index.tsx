@@ -4,6 +4,22 @@ import React, { useState } from 'react';
 import { BusinessProps } from '@/types';
 import { BusinessCard } from '@/components/business-card';
 import { Pagination } from '@/components/pagination';
+import { motion } from 'motion/react';
+
+const containerVariants = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1
+    }
+  }
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, scale: 0.9, y: 20 },
+  show: { opacity: 1, scale: 1, y: 0, transition: { type: "spring" as const, stiffness: 350, damping: 25 } }
+};
 
 function Business({ 
   businesses, 
@@ -34,17 +50,25 @@ function Business({
         </div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
+      <motion.div 
+        key={currentPage} 
+        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20"
+        variants={containerVariants}
+        initial="hidden"
+        animate="show"
+      >
         {paginatedBusinesses.length > 0 ? (
           paginatedBusinesses.map((biz) => (
-            <BusinessCard key={biz.id} business={biz} />
+            <motion.div key={biz.id} variants={itemVariants}>
+              <BusinessCard business={biz} />
+            </motion.div>
           ))
         ) : (
           <div className="col-span-full py-20 text-center">
             <p className="text-slate-400 font-medium text-lg">No se encontraron negocios cercanos.</p>
           </div>
         )}
-      </div>
+      </motion.div>
 
       {showPagination && totalPages > 1 && (
         <Pagination 

@@ -7,6 +7,7 @@ import { Navigation, Pagination, EffectCoverflow } from 'swiper/modules';
 import { CategoryCard } from '../category-card';
 import { BUSINESSES, CATEGORIES_BUSINESS } from '@/constants';
 import { BusinessCard } from '@/components/business-card';
+import { motion } from 'motion/react';
 
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -74,13 +75,19 @@ function CategorySection() {
               <SwiperSlide key={cat.name}>
                 {({ isActive }) => (
                   <Link href={`/business?category=${encodeURIComponent(cat.name)}`} className="block">
-                    <CategoryCard 
-                      icon={cat.icon} 
-                      name={cat.name} 
-                      color={cat.color} 
-                      iconColor={cat.iconColor} 
-                      isActive={isActive}
-                    />
+                    <motion.div
+                      whileHover={{ scale: 1.1 }}
+                      whileTap={{ scale: 0.95 }}
+                      transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                    >
+                      <CategoryCard 
+                        icon={cat.icon} 
+                        name={cat.name} 
+                        color={cat.color} 
+                        iconColor={cat.iconColor} 
+                        isActive={isActive}
+                      />
+                    </motion.div>
                   </Link>
                 )}
               </SwiperSlide>

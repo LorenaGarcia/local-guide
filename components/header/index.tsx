@@ -1,5 +1,8 @@
+"use client";
+
 import React from 'react';
 import Link from 'next/link';
+import { motion } from 'motion/react';
 import { usePathname } from 'next/navigation';
 import { NAV_LINKS } from '@/constants';
 
@@ -29,7 +32,11 @@ function Header() {
               >
                 {link.name}
                 {isActive && (
-                  <div className="absolute -bottom-2 left-0 right-0 h-1 bg-brand-teal rounded-full"></div>
+                  <motion.div 
+                    layoutId="header-active-tab"
+                    className="absolute -bottom-2 left-0 right-0 h-1 bg-brand-teal rounded-full"
+                    transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                  />
                 )}
               </Link>
             );

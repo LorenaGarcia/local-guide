@@ -1,5 +1,7 @@
+"use client";
 import React from 'react';
 import { Search } from '@/components/search';
+import { motion } from 'motion/react';
 
 function Hero() {
   return (
@@ -12,9 +14,17 @@ function Hero() {
       <div className="absolute inset-0 bg-black/40"></div>
       
       <div className="max-w-4xl relative z-10 px-4">
-        <h2 className="text-white text-6xl md:text-8xl font-black leading-tight tracking-tight mb-6">
+        <motion.h2 
+          initial={{ opacity: 0, scale: 0 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{
+              duration: 0.4,
+              scale: { type: "spring", visualDuration: 0.4, bounce: 0.5 },
+          }}
+          className="text-white text-6xl md:text-8xl font-black leading-tight tracking-tight mb-6"
+        >
           Descubre el corazón de tu barrio.
-        </h2>
+        </motion.h2>
         <p className="text-white/90 text-xl md:text-2xl font-medium mb-12 max-w-2xl mx-auto leading-relaxed">
           Encuentra los mejores servicios locales, desde cafeterías acogedoras hasta expertos en mascotas.
         </p>

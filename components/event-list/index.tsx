@@ -6,6 +6,22 @@ import { EventCard } from './event-card';
 import { CategoryFilter } from '@/components/category-filter';
 import { Pagination } from '@/components/pagination';
 import { CalendarModal } from '@/components/calendar';
+import { motion } from 'motion/react';
+
+const containerVariants = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1
+    }
+  }
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, scale: 0.9, y: 20 },
+  show: { opacity: 1, scale: 1, y: 0, transition: { type: "spring" as const, stiffness: 350, damping: 25 } }
+};
 
 function EventList() {
   const [selectedCategory, setSelectedCategory] = useState<string>('Todos');
@@ -98,12 +114,20 @@ function EventList() {
       </div>
 
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 pb-12">
+      <motion.div 
+        key={currentPage} 
+        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 pb-12"
+        variants={containerVariants}
+        initial="hidden"
+        animate="show"
+      >
         {paginatedEvents.map((event) => {
           const isSalmon = event.category.toLowerCase().includes('gastronomía') || event.category.toLowerCase().includes('arte');
           
           return (
-            <EventCard key={event.id} event={event} isSalmon={isSalmon} />
+            <motion.div key={event.id} variants={itemVariants}>
+              <EventCard event={event} isSalmon={isSalmon} />
+            </motion.div>
           );
         })}
         {filteredEvents.length === 0 && (
@@ -111,7 +135,7 @@ function EventList() {
             <p className="text-slate-400 font-medium text-lg">No se encontraron eventos en esta categoría.</p>
           </div>
         )}
-      </div>
+      </motion.div>
 
       <Pagination 
         currentPage={currentPage} 

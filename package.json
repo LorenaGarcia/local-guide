@@ -12,6 +12,7 @@
   "dependencies": {
     "formik": "^2.4.6",
     "lucide-react": "latest",
+    "motion": "^12.38.0",
     "next": "latest",
     "react": "^19.2.3",
     "react-dom": "^19.2.3",
