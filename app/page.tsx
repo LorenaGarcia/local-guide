@@ -1,9 +1,8 @@
+import { Home as HomePage } from "@/components/home";
+import { fetchStory } from "@/lib/storyblok";
 
-import { Home as HomePage } from '@/components/home';
+export default async function Page() {
+  const story = await fetchStory("root");
 
-export default function Page() {
-
-  return (
-    <HomePage/>
-  );
+  return <HomePage story={story} />;
 }

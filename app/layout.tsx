@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import Layout from "@/components/layout-home";
+import StoryblokProvider from "@/components/StoryblokProvider";
 
 const plusJakartaSans = Plus_Jakarta_Sans({
   subsets: ["latin"],
@@ -27,7 +28,9 @@ export default function RootLayout({
         />
       </head>
       <body className={`${plusJakartaSans.variable} font-sans antialiased`}>
-        <Layout>{children}</Layout>
+        <StoryblokProvider>
+          <Layout>{children}</Layout>
+        </StoryblokProvider>
       </body>
     </html>
   );
