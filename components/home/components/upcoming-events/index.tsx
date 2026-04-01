@@ -16,24 +16,24 @@ function UpcomingEvents() {
           </Link>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 mt-16">
           {EVENTS.map(event => (
             <Link 
               key={event.id} 
               href={`/events/${event.id}`}
-              className="bg-white p-5 rounded-3xl shadow-sm border border-slate-50 flex gap-5 group hover:shadow-xl transition-all cursor-pointer"
+              className="bg-white p-6 rounded-3xl shadow-sm border border-slate-50 flex flex-col sm:flex-row gap-5 group hover:shadow-xl transition-all cursor-pointer text-center sm:text-left items-center sm:items-stretch"
             >
-              <div className={`flex-shrink-0 w-24 h-28 ${event.month === 'OCT' ? 'bg-baby-blue' : 'bg-peach'} text-slate-700 rounded-2xl flex flex-col items-center justify-center shadow-sm`}>
-                <span className="text-xs font-black uppercase tracking-widest">{event.month}</span>
+              <div className={`flex-shrink-0 w-full sm:w-24 py-4 sm:py-0 sm:h-auto min-h-[7rem] ${event.month === 'OCT' ? 'bg-baby-blue' : 'bg-peach'} text-slate-700 rounded-2xl flex sm:flex-col items-center justify-center gap-2 sm:gap-0 shadow-sm`}>
+                <span className="text-sm sm:text-xs font-black uppercase tracking-widest">{event.month}</span>
                 <span className="text-3xl font-black">{event.day}</span>
               </div>
-              <div className="flex flex-col justify-center">
-                <h5 className="font-black text-lg mb-2 text-slate-800 leading-tight group-hover:text-peach transition-colors">{event.title}</h5>
-                <div className="flex items-center gap-2 text-slate-400 text-xs font-bold mb-1">
+              <div className="flex flex-col justify-center w-full">
+                <h5 className="font-black text-lg mb-3 sm:mb-2 text-slate-800 leading-tight group-hover:text-peach transition-colors">{event.title}</h5>
+                <div className="flex flex-wrap items-center justify-center sm:justify-start gap-2 text-slate-400 text-xs font-bold mb-1">
                   <span className="material-symbols-outlined text-sm">schedule</span>
                   <span>{event.time}</span>
                 </div>
-                <div className="flex items-center gap-2 text-slate-700 text-xs font-black">
+                <div className="flex flex-wrap items-center justify-center sm:justify-start gap-2 text-slate-700 text-xs font-black mt-1">
                   <span className="material-symbols-outlined text-sm text-peach">location_on</span>
                   <span>{event.locationName}</span>
                 </div>

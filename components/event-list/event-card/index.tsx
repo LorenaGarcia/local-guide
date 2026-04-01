@@ -5,11 +5,7 @@ import Link from 'next/link';
 import { LocalEvent } from '@/types';
 
 function EventCard({event, isSalmon}: {event: LocalEvent, isSalmon: boolean}) {
-  const getCallToAction = (title: string) => {
-    if (title.toLowerCase().includes('yoga')) return 'Reservar Plaza';
-    if (title.toLowerCase().includes('crossfit')) return 'Inscribirse';
-    return 'Más Información';
-  };
+
 
   const getDateBadge = (id: string) => {
     if (id === 'e1') return 'PRÓXIMO SÁBADO';
@@ -58,9 +54,9 @@ function EventCard({event, isSalmon}: {event: LocalEvent, isSalmon: boolean}) {
           </span>
         </div>
 
-        <button className="w-full bg-[#2D9C8D] text-white py-4 rounded-2xl font-black text-sm hover:bg-[#25877a] transition-all shadow-lg shadow-black/20 pointer-events-auto">
-          {getCallToAction(event.title)}
-        </button>
+        <Link href={`/events/${event.id}`} className="w-full bg-[#2D9C8D] text-white py-4 rounded-2xl font-black text-sm hover:bg-[#25877a] transition-all shadow-lg shadow-black/20 pointer-events-auto block text-center">
+          Más Información
+        </Link>
       </div>
     </div>
   );
