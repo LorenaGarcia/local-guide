@@ -8,13 +8,40 @@ import { CategoryCard } from '../category-card';
 import { BUSINESSES, CATEGORIES_BUSINESS } from '@/constants';
 import { BusinessCard } from '@/components/business-card';
 import { motion } from 'motion/react';
+import { storyblokEditable } from "@storyblok/react/rsc";
+
+interface CategoryBlok {
+  _uid: string;
+  title?: string;
+  icon?: string;
+  bg_color?: string;
+  icon_color?: string;
+}
 
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/effect-coverflow';
 
-function CategorySection() {
+function CategorySection({ categoryBloks }: { categoryBloks?: CategoryBlok[] }) {
+
+  const items = categoryBloks?.length 
+      ? categoryBloks.map(b => ({
+          id: b._uid,
+          name: b.title || '',
+          icon: b.icon || '',
+          color: b.bg_color || '',
+          iconColor: b.icon_color || '',
+          blok: b
+        }))
+      : CATEGORIES_BUSINESS.map(c => ({
+          id: c.name,
+          name: c.name,
+          icon: c.icon,
+          color: c.color,
+          iconColor: c.iconColor,
+          blok: null as any
+        }));
 
   return (
    <>
@@ -71,10 +98,14 @@ function CategorySection() {
             }}
             className="categories-swiper !px-4 md:!px-0"
           >
-            {CATEGORIES_BUSINESS.map((cat, index) => (
-              <SwiperSlide key={cat.name}>
+            {items.map((cat, index) => (
+              <SwiperSlide key={cat.id}>
                 {({ isActive }) => (
-                  <Link href={`/business?category=${encodeURIComponent(cat.name)}`} className="block">
+                  <Link 
+                    href={`/business?category=${encodeURIComponent(cat.name)}`} 
+                    className="block"
+                    {...(cat.blok ? storyblokEditable(cat.blok as any) : {})}
+                  >
                     <motion.div
                       whileHover={{ scale: 1.1 }}
                       whileTap={{ scale: 0.95 }}

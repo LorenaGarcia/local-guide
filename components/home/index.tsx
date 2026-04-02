@@ -10,10 +10,12 @@ function Home({ story }: { story?: any }) {
     content?.hero_section?.[0] ||
     content?.body?.find((b: any) => b.component === "home_banner");
 
+  const categoryBloks = content?.category_carousel;
+
   return (
     <div className="max-w-[1600px] mx-auto px-4 md:px-8 py-8">
       {heroBlok ? <StoryblokComponent blok={heroBlok} /> : <Hero />}
-      <CategorySection />
+      <CategorySection categoryBloks={categoryBloks} />
       <UpcomingEvents />
     </div>
   );

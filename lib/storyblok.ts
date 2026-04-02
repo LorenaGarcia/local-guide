@@ -1,5 +1,5 @@
 import { storyblokInit, apiPlugin, getStoryblokApi } from "@storyblok/react/rsc";
-import { HomeBanner } from "@/components/storyblok/HomeBanner";
+import { HomeBanner } from "@/components/storyblok/home-banner";
 
 storyblokInit({
   accessToken: process.env.STORYBLOK_TOKEN,

@@ -2,7 +2,7 @@
 import { storyblokInit, apiPlugin } from "@storyblok/react/rsc";
 import React from "react";
 
-import { HomeBanner } from "./storyblok/HomeBanner";
+import { HomeBanner } from "./storyblok/home-banner";
 
 storyblokInit({
   accessToken: process.env.NEXT_PUBLIC_STORYBLOK_TOKEN,

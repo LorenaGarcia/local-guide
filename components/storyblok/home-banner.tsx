@@ -4,9 +4,9 @@ import React from "react";
 import { Search } from "@/components/search";
 import { motion } from "motion/react";
 import { storyblokEditable } from "@storyblok/react/rsc";
+import { HomeBannerStoryblok } from "./home-banner.types";
 
-export const HomeBanner = ({ blok }: { blok: any }) => {
-  console.log("blok", blok);
+export const HomeBanner = ({ blok }: { blok: HomeBannerStoryblok }) => {
   return (
     <section
       {...storyblokEditable(blok)}
