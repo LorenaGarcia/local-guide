@@ -1,4 +1,3 @@
-
 interface Business {
   id: string;
   name: string;
@@ -116,11 +115,23 @@ interface GalleryModalProps {
   initialIndex?: number;
 }
 
+type BgColorType = {
+  _uid: string;
+  color: string;
+  plugin: string;
+};
+
+type IconColorType = {
+  _uid: string;
+  color: string;
+  plugin: string;
+};
+
 interface CategoryCardProps {
   icon: string;
   name: string;
-  color: string;
-  iconColor: string;
+  bgColor: BgColorType | string;
+  iconColor: IconColorType | string;
   isActive?: boolean;
 }
 
@@ -130,6 +141,24 @@ interface PaginationProps {
   onPageChange: (page: number) => void;
 }
 
- type CategoryType = 'Restaurantes' | 'Belleza' | 'Mascotas' | 'Bienestar' | 'Eventos';
+type CategoryType =
+  | "Restaurantes"
+  | "Belleza"
+  | "Mascotas"
+  | "Bienestar"
+  | "Eventos";
 
-export type { Business, LocalEvent, CategoryType, BusinessProps, BusinessCardProps, CalendarModalProps, CategoryFilterProps, GalleryModalProps, CategoryCardProps, PaginationProps}
+export type {
+  Business,
+  LocalEvent,
+  CategoryType,
+  BusinessProps,
+  BusinessCardProps,
+  CalendarModalProps,
+  CategoryFilterProps,
+  GalleryModalProps,
+  CategoryCardProps,
+  PaginationProps,
+  BgColorType,
+  IconColorType
+};

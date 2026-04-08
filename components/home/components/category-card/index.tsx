@@ -1,18 +1,38 @@
-import React from 'react';
-import { CategoryCardProps } from '@/types';
+import React from "react";
+import { CategoryCardProps } from "@/types";
 
-function CategoryCard({ icon, name, color, iconColor, isActive }: CategoryCardProps) {
+function CategoryCard({
+  icon,
+  name,
+  bgColor,
+  iconColor,
+  isActive,
+}: CategoryCardProps) {
   return (
-    <div className={`
+    <div
+      className={`
       relative bg-white rounded-[3rem] transition-all duration-700 flex flex-col items-center justify-center mx-auto
-      ${isActive 
-        ? 'w-[210px] h-[210px] shadow-[0_40px_60px_-10px_rgba(0,0,0,0.12)] scale-100' 
-        : 'w-[200px] h-[200px] shadow-[0_10px_20px_-10px_rgba(0,0,0,0.03)] opacity-40 scale-90'}
-    `}>
-      <div className="w-24 h-24 rounded-full flex items-center justify-center mb-8" style={{ backgroundColor: color }}>
-        <span className="material-symbols-outlined text-5xl" style={{ color: iconColor }}>{icon}</span>
+      ${
+        isActive
+          ? "w-[210px] h-[210px] shadow-[0_40px_60px_-10px_rgba(0,0,0,0.12)] scale-100"
+          : "w-[200px] h-[200px] shadow-[0_10px_20px_-10px_rgba(0,0,0,0.03)] opacity-40 scale-90"
+      }
+    `}
+    >
+      <div
+        className="w-24 h-24 rounded-full flex items-center justify-center mb-8"
+        style={{ backgroundColor: typeof bgColor === 'string' ? bgColor : bgColor?.color }}
+      >
+        <span
+          className="material-symbols-outlined text-5xl"
+          style={{ color: typeof iconColor === 'string' ? iconColor : iconColor?.color }}
+        >
+          {icon}
+        </span>
       </div>
-      <h4 className="font-extrabold text-[#1F4D47] text-2xl tracking-tight">{name}</h4>
+      <h4 className="font-extrabold text-[#1F4D47] text-2xl tracking-tight">
+        {name}
+      </h4>
     </div>
   );
 }
