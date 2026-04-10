@@ -8,4 +8,15 @@ interface CategoryBlok {
   icon_color?: IconColorType;
 }
 
-export type { CategoryBlok };
+interface BusinessBlok {
+  _uid: string;
+  name?: string;
+  description?: string;
+  image?: { filename: string } | string | any;
+  price?: string;
+  tags?: string[];
+  address?: string;
+  [key: string]: any;
+}
+
+export type { CategoryBlok, BusinessBlok };

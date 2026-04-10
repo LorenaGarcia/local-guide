@@ -89,8 +89,17 @@ interface BusinessProps {
   showPagination?: boolean;
 }
 
+interface HighlightedBusiness {
+  id: string;
+  image: string;
+  name: string;
+  description: string;
+  tags?: string[];
+  address?: string;
+}
+
 interface BusinessCardProps {
-  business: Business;
+  business: HighlightedBusiness;
 }
 
 interface CalendarModalProps {

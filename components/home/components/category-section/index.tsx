@@ -7,11 +7,14 @@ import { storyblokEditable } from "@storyblok/react/rsc";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, EffectCoverflow } from "swiper/modules";
 
-import { BUSINESSES, CATEGORIES_BUSINESS } from "@/constants";
 import { BusinessCard } from "@/components/business-card";
 
 import { CategoryCard } from "../category-card";
-import { CategoryBlok } from "./category-section.types";
+import {
+  getCategories,
+  getHighlightedBusinesses,
+} from "./category-section.utils";
+import { CategoryBlok, BusinessBlok } from "./category-section.types";
 
 import "swiper/css";
 import "swiper/css/navigation";
@@ -23,40 +26,10 @@ function CategorySection({
   businessBloks,
 }: {
   categoryBloks?: CategoryBlok[];
-  businessBloks?: any[];
+  businessBloks?: BusinessBlok[];
 }) {
-  const categories = categoryBloks?.length
-    ? categoryBloks.map((b) => ({
-        id: b._uid,
-        name: b.title || "",
-        icon: b.icon || "",
-        color: b.bg_color || "",
-        iconColor: b.icon_color || "",
-        blok: b,
-      }))
-    : CATEGORIES_BUSINESS.map((c) => ({
-        id: c.name,
-        name: c.name,
-        icon: c.icon,
-        color: c.color,
-        iconColor: c.iconColor,
-        blok: null as any,
-      }));
-
-      console.log("businessBloks", businessBloks)
-
-  const highlightedBusinesses = businessBloks?.length
-    ? businessBloks.map((b) => ({
-        id: b._uid,
-        name: b.name || "",
-        description: b.description || "",
-        image: b.image?.filename || b.image || "",
-        price: b.price || "",
-        shortDescription: b.shortDescription || b.description || "",
-        tags: b.tags || [],
-        address: b.address || "",
-      }))
-    : [];
+  const categories = getCategories(categoryBloks || []);
+  const highlightedBusinesses = getHighlightedBusinesses(businessBloks || []);
 
   return (
     <>
@@ -220,7 +193,13 @@ function CategorySection({
             className="featured-swiper"
           >
             {highlightedBusinesses.map((biz) => (
-              <SwiperSlide key={biz.id} className="!h-auto flex" {...((biz as any).blok ? storyblokEditable((biz as any).blok) : {})}>
+              <SwiperSlide
+                key={biz.id}
+                className="!h-auto flex"
+                {...((biz as any).blok
+                  ? storyblokEditable((biz as any).blok)
+                  : {})}
+              >
                 <BusinessCard business={biz} />
               </SwiperSlide>
             ))}
