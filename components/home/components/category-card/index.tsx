@@ -24,8 +24,11 @@ function CategoryCard({
         style={{ backgroundColor: typeof bgColor === 'string' ? bgColor : bgColor?.color }}
       >
         <span
-          className="material-symbols-outlined text-5xl"
-          style={{ color: typeof iconColor === 'string' ? iconColor : iconColor?.color }}
+          className="material-symbols-outlined"
+          style={{ 
+            color: typeof iconColor === 'string' ? iconColor : iconColor?.color,
+            fontSize: "56px"
+          }}
         >
           {icon}
         </span>

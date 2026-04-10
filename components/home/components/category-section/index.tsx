@@ -20,8 +20,10 @@ import "swiper/css/effect-coverflow";
 
 function CategorySection({
   categoryBloks,
+  businessBloks,
 }: {
   categoryBloks?: CategoryBlok[];
+  businessBloks?: any[];
 }) {
   const categories = categoryBloks?.length
     ? categoryBloks.map((b) => ({
@@ -40,6 +42,21 @@ function CategorySection({
         iconColor: c.iconColor,
         blok: null as any,
       }));
+
+      console.log("businessBloks", businessBloks)
+
+  const highlightedBusinesses = businessBloks?.length
+    ? businessBloks.map((b) => ({
+        id: b._uid,
+        name: b.name || "",
+        description: b.description || "",
+        image: b.image?.filename || b.image || "",
+        price: b.price || "",
+        shortDescription: b.shortDescription || b.description || "",
+        tags: b.tags || [],
+        address: b.address || "",
+      }))
+    : [];
 
   return (
     <>
@@ -202,8 +219,8 @@ function CategorySection({
             }}
             className="featured-swiper"
           >
-            {BUSINESSES.slice(1, 4).map((biz) => (
-              <SwiperSlide key={biz.id} className="h-auto">
+            {highlightedBusinesses.map((biz) => (
+              <SwiperSlide key={biz.id} className="!h-auto flex" {...((biz as any).blok ? storyblokEditable((biz as any).blok) : {})}>
                 <BusinessCard business={biz} />
               </SwiperSlide>
             ))}

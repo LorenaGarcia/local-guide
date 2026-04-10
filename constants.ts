@@ -21,6 +21,7 @@ const BUSINESSES: Business[] = [
     shortDescription: 'Clases personalizadas y Reformers de alta gama para todos los niveles.',
     image: 'https://ik.imagekit.io/rezeve/business/fc33b7a3-d36e-48b3-8db8-6ae36a971ae5/image/editor/bb22199e-108b-4e3b-a2bc-abea69659d03.jpg',
     isFeatured: true,
+
     priceLevel: '$35/clase',
     priceRange: '$35 – $60',
     priceUnit: 'por sesión',
@@ -76,6 +77,7 @@ const BUSINESSES: Business[] = [
     priceRange: '$45 – $120',
     priceUnit: 'al mes',
     distance: '1.2 millas',
+
     tags: ['24/7'],
     location: { lat: 37.7858, lng: -122.4064, address: 'Paseos de Zakia Pte., 76269 Santiago de Querétaro, Qro.' },
     gallery: [
@@ -96,6 +98,7 @@ const BUSINESSES: Business[] = [
     tag2: 'MEDITACIÓN',
     rating: 5.0,
     reviewsCount: 89,
+
     description: 'Vinyasa, Hatha y sesiones de meditación guiada en un entorno relajante.',
     shortDescription: 'Vinyasa, Hatha y sesiones de meditación guiada en un entorno relajante.',
     image: 'https://www.bkmag.com/wp-content/uploads/2025/06/Screenshot-2025-06-04-at-3.24.13%E2%80%AFPM.png',
@@ -119,6 +122,7 @@ const BUSINESSES: Business[] = [
     tag2: 'BOUTIQUE',
     rating: 4.8,
     reviewsCount: 112,
+
     description: 'Entrena tu core con los mejores especialistas de la zona.',
     shortDescription: 'Entrena tu core con los mejores especialistas de la zona.',
     image: 'https://assets-cdn.wellhub.com/images/?su=https://images.partners.gympass.com/image/partners/b8cd1072-0232-4f9f-8303-735f12cab4ac/lg_9528f5f4-7fad-4ba3-b570-2ae60dbba0f5_Imagen1Wellhub.jpg',
@@ -137,6 +141,7 @@ const BUSINESSES: Business[] = [
     tag2: 'GIMNASIO',
     rating: 4.9,
     reviewsCount: 310,
+
     description: 'WODs desafiantes y comunidad activa para amantes del alto rendimiento.',
     shortDescription: 'WODs desafiantes y comunidad activa para amantes del alto rendimiento.',
     image: 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&q=80&w=800',
@@ -154,6 +159,7 @@ const BUSINESSES: Business[] = [
     tag2: 'MEDITACIÓN',
     rating: 4.6,
     reviewsCount: 142,
+
     description: 'Encuentra tu paz interior en pleno centro de la ciudad.',
     shortDescription: 'Encuentra tu paz interior en pleno centro de la ciudad.',
     image: 'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&q=80&w=800',
@@ -171,6 +177,7 @@ const BUSINESSES: Business[] = [
     tag2: 'TRADICIONAL',
     rating: 4.8,
     reviewsCount: 450,
+
     description: 'Auténtica cocina mediterránea con los ingredientes más frescos del mercado.',
     shortDescription: 'Tapas de autor y vinos seleccionados en un ambiente vibrante.',
     image: 'https://images.unsplash.com/photo-1515467873231-15362ce09503?auto=format&fit=crop&q=80&w=800',
@@ -188,6 +195,7 @@ const BUSINESSES: Business[] = [
     tag2: 'EMPRENDEDORES',
     rating: 4.7,
     reviewsCount: 120,
+
     description: 'Espacios de trabajo colaborativo diseñados para la innovación.',
     shortDescription: 'Coworking premium con internet de alta velocidad y café ilimitado.',
     image: 'https://images.unsplash.com/photo-1527192491265-7e15c55b1ed2?auto=format&fit=crop&q=80&w=800',
@@ -205,6 +213,7 @@ const BUSINESSES: Business[] = [
     tag2: 'CLÁSICOS',
     rating: 4.9,
     reviewsCount: 850,
+
     description: 'Vive el cine como nunca antes en nuestra sala boutique vintage.',
     shortDescription: 'Cine de autor y clásicos restaurados con sonido Dolby Atmos.',
     image: 'https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&q=80&w=800',
@@ -222,6 +231,7 @@ const BUSINESSES: Business[] = [
     tag2: 'SOSTENIBLE',
     rating: 4.6,
     reviewsCount: 95,
+
     description: 'Curaduría exclusiva de ropa vintage y accesorios únicos.',
     shortDescription: 'Moda sostenible y piezas de diseño con historia.',
     image: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&q=80&w=800',
