@@ -1,7 +1,7 @@
 import { CategoryBlok, BusinessBlok } from "./category-section.types";
 
 function getCategories(categoryBloks: CategoryBlok[]) {
-  return categoryBloks.map((b) => ({
+    return categoryBloks.map((b) => ({
     id: b._uid,
     name: b.title || "",
     icon: b.icon || "",
@@ -12,16 +12,18 @@ function getCategories(categoryBloks: CategoryBlok[]) {
 }
 
 function getHighlightedBusinesses(businessBloks: BusinessBlok[]) {
-  return businessBloks.map((b) => ({
-    id: b._uid,
-    name: b.name || "",
-    description: b.description || "",
-    image: b.image?.filename || b.image || "",
-    price: b.price || "",
-    tags: b.tags || [],
-    address: b.address || "",
-    blok: b,
-  }));
+  return businessBloks
+    .filter((b) => b.is_active)
+    .map((b) => ({
+      id: b._uid,
+      name: b.name || "",
+      description: b.description || "",
+      image: b.image?.filename || b.image || "",
+      tags: b.tags || [],
+      address: b.address || "",
+      is_active: b.is_active,
+      blok: b,
+    }));
 }
 
 export { getCategories, getHighlightedBusinesses };

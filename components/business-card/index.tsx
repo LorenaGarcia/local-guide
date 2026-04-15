@@ -26,19 +26,19 @@ function BusinessCard({ business }: BusinessCardProps) {
             <h3 className="text-xl font-bold text-slate-800 leading-tight group-hover:text-[#2D9C8D] transition-colors mb-2">
               {name}
             </h3>
-            
+
+            <p className="text-slate-500 text-sm font-medium line-clamp-3 leading-relaxed mb-6">
+              {description}
+            </p>
+
             {address && (
-              <div className="flex items-start gap-1.5 text-slate-400 text-xs font-semibold mb-3">
-                <span className="material-symbols-outlined text-[14px] shrink-0 mt-[1px]">
+              <div className="flex items-center gap-1.5 text-slate-400 text-xs font-semibold mb-3">
+                <span className="material-symbols-outlined text-[14px] shrink-0">
                   location_on
                 </span>
                 <span className="leading-snug">{address}</span>
               </div>
             )}
-
-            <p className="text-slate-500 text-sm font-medium line-clamp-3 leading-relaxed mb-6">
-              {description}
-            </p>
           </div>
 
           <div className="flex flex-col gap-5 pt-5 border-t border-slate-50 border-dashed">

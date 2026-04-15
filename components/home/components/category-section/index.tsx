@@ -30,6 +30,8 @@ function CategorySection({
 }) {
   const categories = getCategories(categoryBloks || []);
   const highlightedBusinesses = getHighlightedBusinesses(businessBloks || []);
+  const showBusinessSection = !!highlightedBusinesses.find((b) => b.is_active);
+  console.log("showBusinessSection", showBusinessSection)
 
   return (
     <>
@@ -158,7 +160,7 @@ function CategorySection({
         `}</style>
       </section>
 
-      <section className="mb-24">
+      {showBusinessSection && (<section className="mb-24">
         <div className="flex items-center justify-between mb-10 px-4 md:px-0">
           <h3 className="text-3xl font-black tracking-tight text-slate-800">
             Gemas Locales Destacadas
@@ -205,7 +207,7 @@ function CategorySection({
             ))}
           </Swiper>
         </div>
-      </section>
+      </section>)}
     </>
   );
 }

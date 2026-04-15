@@ -13,9 +13,9 @@ interface BusinessBlok {
   name?: string;
   description?: string;
   image?: { filename: string } | string | any;
-  price?: string;
   tags?: string[];
   address?: string;
+  is_active?: boolean;
   [key: string]: any;
 }
 

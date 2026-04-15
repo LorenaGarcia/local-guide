@@ -14,10 +14,11 @@ function Home({ story }: { story?: any }) {
   const carouselHighliths = content?.carousel_highliths;
   const dateCards = content?.calendar_events;
 
+
   return (
     <div className="max-w-[1600px] mx-auto px-4 md:px-8 py-8">
       {heroBlok ? <StoryblokComponent blok={heroBlok} /> : <Hero />}
-      <CategorySection categoryBloks={categoryBloks} businessBloks={carouselHighliths} />
+       <CategorySection categoryBloks={categoryBloks} businessBloks={carouselHighliths} />
       <UpcomingEvents eventBloks={dateCards} />
     </div>
   );

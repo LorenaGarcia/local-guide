@@ -80,7 +80,7 @@ interface LocalEvent {
   usefulInfo?: string[];
 }
 interface BusinessProps {
-  businesses: Business[];
+  businesses: HighlightedBusiness[];
   title?: string;
   subtitle?: string;
   itemsPerPage?: number;
@@ -96,6 +96,7 @@ interface HighlightedBusiness {
   description: string;
   tags?: string[];
   address?: string;
+  is_active?: boolean;
 }
 
 interface BusinessCardProps {
@@ -169,5 +170,6 @@ export type {
   CategoryCardProps,
   PaginationProps,
   BgColorType,
-  IconColorType
+  IconColorType,
+  HighlightedBusiness
 };
