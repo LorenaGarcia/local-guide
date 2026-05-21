@@ -5,12 +5,14 @@ import Link from "next/link";
 import { BusinessCardProps } from "@/types";
 
 function BusinessCard({ business }: BusinessCardProps) {
-  const { id, image, name, description, tags, address } = business;
+
+  const { id, image, name, description, tags, address, url } = business;
+  const href = url || `/business/${id}`;
 
   return (
     <div className="group bg-white rounded-[1.5rem] border border-slate-100 shadow-sm hover:shadow-2xl transition-all duration-500 h-full w-full">
       <Link
-        href={`/business/${id}`}
+        href={href}
         className="flex flex-col h-full w-full overflow-hidden rounded-[1.5rem]"
       >
         <div className="relative w-full h-[180px] bg-slate-100 shrink-0">
@@ -54,11 +56,11 @@ function BusinessCard({ business }: BusinessCardProps) {
                   ))}
             </div>
 
-            <button 
+            <div 
               className="w-full mt-2 py-2.5 rounded-full border border-[#2D9C8D] text-[#2D9C8D] text-[11px] font-black uppercase tracking-widest hover:bg-[#2D9C8D] hover:text-white transition-all text-center shadow-sm"
             >
               VER MÁS
-            </button>
+            </div>
           </div>
         </div>
       </Link>

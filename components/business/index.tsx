@@ -25,11 +25,12 @@ function Business({
   businesses, 
   title = "Todos los Negocios", 
   subtitle = "Resultados cercanos",
-  itemsPerPage = 6,
+  itemsPerPage = 15,
   currentPage: externalPage,
   onPageChange: externalOnPageChange,
   showPagination = true
 }: BusinessProps) {
+
   const [internalPage, setInternalPage] = useState(1);
   
   const currentPage = externalPage !== undefined ? externalPage : internalPage;

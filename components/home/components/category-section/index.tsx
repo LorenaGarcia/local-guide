@@ -3,7 +3,7 @@
 import React from "react";
 import Link from "next/link";
 import { motion } from "motion/react";
-import { storyblokEditable } from "@storyblok/react/rsc";
+import { storyblokEditable, SbBlokData } from "@storyblok/react/rsc";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, EffectCoverflow } from "swiper/modules";
 
@@ -31,8 +31,6 @@ function CategorySection({
   const categories = getCategories(categoryBloks || []);
   const highlightedBusinesses = getHighlightedBusinesses(businessBloks || []);
   const showBusinessSection = !!highlightedBusinesses.find((b) => b.is_active);
-  console.log("showBusinessSection", showBusinessSection)
-
   return (
     <>
       <section className="mb-32 relative overflow-hidden">
@@ -101,7 +99,7 @@ function CategorySection({
                     )}`}
                     className="block"
                     {...(category.blok
-                      ? storyblokEditable(category.blok as any)
+                      ? storyblokEditable(category.blok as SbBlokData)
                       : {})}
                   >
                     <motion.div
@@ -198,8 +196,8 @@ function CategorySection({
               <SwiperSlide
                 key={biz.id}
                 className="!h-auto flex"
-                {...((biz as any).blok
-                  ? storyblokEditable((biz as any).blok)
+                {...(biz.blok
+                  ? storyblokEditable(biz.blok as SbBlokData)
                   : {})}
               >
                 <BusinessCard business={biz} />

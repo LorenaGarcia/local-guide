@@ -21,9 +21,9 @@ function GalleryModal({ isOpen, onClose, images, businessName, initialIndex = 0 
 
   return (
     <div className="fixed inset-0 z-[100] bg-black/95 backdrop-blur-3xl flex flex-col animate-in fade-in duration-300">
-      <div 
+      <div
         className="absolute inset-0 opacity-20 pointer-events-none transition-all duration-700"
-        style={{ 
+        style={{
           backgroundImage: `url(${images[currentIndex]})`,
           backgroundPosition: 'center',
           backgroundSize: 'cover'
@@ -38,11 +38,7 @@ function GalleryModal({ isOpen, onClose, images, businessName, initialIndex = 0 
           </p>
         </div>
         <div className="flex items-center gap-4">
-          <button className="flex items-center gap-2 px-6 py-2.5 rounded-full bg-white/10 hover:bg-white/20 text-white text-sm font-bold transition-all border border-white/10">
-            <span className="material-symbols-outlined text-[20px]">share</span>
-            Compartir
-          </button>
-          <button 
+          <button
             onClick={onClose}
             className="w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-all border border-white/10"
           >
@@ -70,8 +66,8 @@ function GalleryModal({ isOpen, onClose, images, businessName, initialIndex = 0 
           {images.map((img, i) => (
             <SwiperSlide key={i} className="flex items-center justify-center">
               <div className="w-full h-full flex items-center justify-center p-4">
-                <img 
-                  src={img} 
+                <img
+                  src={img}
                   alt={`${businessName} gallery ${i}`}
                   className="max-w-full max-h-full object-contain rounded-[2rem] shadow-2xl"
                 />

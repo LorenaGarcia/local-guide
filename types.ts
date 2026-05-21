@@ -1,3 +1,4 @@
+import React from 'react';
 interface Business {
   id: string;
   name: string;
@@ -89,6 +90,8 @@ interface BusinessProps {
   showPagination?: boolean;
 }
 
+import { SbBlokData } from "@storyblok/react/rsc";
+
 interface HighlightedBusiness {
   id: string;
   image: string;
@@ -97,6 +100,8 @@ interface HighlightedBusiness {
   tags?: string[];
   address?: string;
   is_active?: boolean;
+  url?: string;
+  blok?: SbBlokData;
 }
 
 interface BusinessCardProps {
@@ -158,6 +163,8 @@ type CategoryType =
   | "Bienestar"
   | "Eventos";
 
+interface SVGIconProps extends React.SVGProps<SVGSVGElement> {}
+
 export type {
   Business,
   LocalEvent,
@@ -171,5 +178,6 @@ export type {
   PaginationProps,
   BgColorType,
   IconColorType,
-  HighlightedBusiness
+  HighlightedBusiness,
+  SVGIconProps
 };
