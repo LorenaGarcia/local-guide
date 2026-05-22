@@ -23,7 +23,7 @@ function UpcomingEvents({ eventBloks }: { eventBloks?: EventBlok[] }) {
           </p>
         </div>
         <Link
-          href="/events"
+          href="/eventos"
           className="bg-white text-slate-700 border-2 border-peach px-8 py-4 rounded-2xl font-black hover:bg-peach hover:text-white transition-all shadow-xl shadow-peach/10"
         >
           Ver Calendario
@@ -34,16 +34,15 @@ function UpcomingEvents({ eventBloks }: { eventBloks?: EventBlok[] }) {
         {events.map((event) => (
           <Link
             key={event.id}
-            href={`/events/${event.id}`}
+            href={event.linkDetail || `/eventos/${event.id}`}
             className="bg-white p-6 rounded-3xl shadow-sm border border-slate-50 flex flex-col sm:flex-row gap-5 group hover:shadow-xl transition-all cursor-pointer text-center sm:text-left items-center sm:items-stretch"
             {...((event as any).blok
               ? storyblokEditable((event as any).blok)
               : {})}
           >
             <div
-              className={`flex-shrink-0 w-full sm:w-24 py-4 sm:py-0 sm:h-auto min-h-[7rem] ${
-                event.month === "OCT" ? "bg-baby-blue" : "bg-peach"
-              } text-slate-700 rounded-2xl flex sm:flex-col items-center justify-center gap-2 sm:gap-0 shadow-sm`}
+              className={`flex-shrink-0 w-full sm:w-24 py-4 sm:py-0 sm:h-auto min-h-[7rem] ${event.month === "OCT" ? "bg-baby-blue" : "bg-peach"
+                } text-slate-700 rounded-2xl flex sm:flex-col items-center justify-center gap-2 sm:gap-0 shadow-sm`}
             >
               <span className="text-sm sm:text-xs font-black uppercase tracking-widest">
                 {event.month}

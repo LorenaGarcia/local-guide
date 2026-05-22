@@ -21,7 +21,7 @@ function Footer() {
           <h6 className="font-bold mb-6 text-[#1F4D47] dark:text-slate-200">Navegación</h6>
           <ul className="space-y-4 text-sm text-[#708E8A] dark:text-slate-400">
             <li><a className="hover:text-[#2D9C8D] transition-colors" href="/search">Explorar</a></li>
-            <li><a className="hover:text-[#2D9C8D] transition-colors" href="/events">Eventos</a></li>
+            <li><a className="hover:text-[#2D9C8D] transition-colors" href="/eventos">Eventos</a></li>
             <li><a className="hover:text-[#2D9C8D] transition-colors" href="#">Negocios Destacados</a></li>
           </ul>
         </div>

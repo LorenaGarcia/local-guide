@@ -10,7 +10,7 @@ function BusinessCard({ business }: BusinessCardProps) {
   const href = url || `/business/${id}`;
 
   return (
-    <div className="group bg-white rounded-[1.5rem] border border-slate-100 shadow-sm hover:shadow-2xl transition-all duration-500 h-full w-full">
+    <div className="group bg-white rounded-[1.5rem] border border-slate-100 shadow-sm hover:shadow-2xl transition-all duration-500 h-full w-full min-h-[500px]">
       <Link
         href={href}
         className="flex flex-col h-full w-full overflow-hidden rounded-[1.5rem]"

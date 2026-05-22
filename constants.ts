@@ -440,7 +440,7 @@ const CATEGORIES_BUSINESS = [
 
 const NAV_LINKS = [
     { name: 'Explorar', path: '/' },
-    { name: 'Eventos', path: '/events' },
+    { name: 'Eventos', path: '/eventos' },
     { name: 'Negocios', path: '/business' },
   ];
 

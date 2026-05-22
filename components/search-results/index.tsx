@@ -2,11 +2,9 @@
 
 import React, { Suspense, useState } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
-import { BUSINESSES, EVENTS } from '@/constants';
 import { BusinessCard } from '@/components/business-card';
 import { EventCard } from '@/components/event-list/event-card';
 import { Pagination } from '@/components/pagination';
-
 
 function SearchResultsContent() {
   const router = useRouter();
@@ -15,12 +13,9 @@ function SearchResultsContent() {
   const query = searchParams.get('q') || '';
   const locationParam = searchParams.get('l') || '';
 
-  const normalizeString = (str: string) => 
-    str.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
-
-  const normalizedQuery = normalizeString(query);
-  const normalizedLocation = normalizeString(locationParam);
-  
+  const [filteredBusinesses, setFilteredBusinesses] = useState<any[]>([]);
+  const [filteredEvents, setFilteredEvents] = useState<any[]>([]);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
   const [activeTab, setActiveTab] = useState<'businesses' | 'events'>('businesses');
   const [selectedCategory, setSelectedCategory] = useState<string>(urlCategory || 'Todos');
   const [currentPage, setCurrentPage] = useState(1);
@@ -28,7 +23,8 @@ function SearchResultsContent() {
 
   React.useEffect(() => {
     const categoryQuery = searchParams.get('category');
-    const q = searchParams.get('q');
+    const q = searchParams.get('q') || '';
+    const l = searchParams.get('l') || '';
     
     if (categoryQuery) {
       setSelectedCategory(categoryQuery);
@@ -38,12 +34,27 @@ function SearchResultsContent() {
       setActiveTab('businesses');
     }
     setCurrentPage(1);
+
+    const fetchResults = async () => {
+      setIsLoading(true);
+      try {
+        const res = await fetch(`/api/search?q=${encodeURIComponent(q)}&l=${encodeURIComponent(l)}`);
+        const data = await res.json();
+        setFilteredBusinesses(data.businesses || []);
+        setFilteredEvents(data.events || []);
+      } catch (err) {
+        console.error("Error fetching search results:", err);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchResults();
   }, [searchParams]);
 
   const handleCategoryChange = (category: string) => {
     setSelectedCategory(category);
     setCurrentPage(1);
-    
 
     const params = new URLSearchParams(searchParams.toString());
     if (category === 'Todos') {
@@ -53,25 +64,6 @@ function SearchResultsContent() {
     }
     router.push(`/search?${params.toString()}`, { scroll: false });
   };
-
-  const filteredBusinesses = BUSINESSES.filter(biz => {
-    const matchesQuery = !query || 
-      normalizeString(biz.name).includes(normalizedQuery) || 
-      (biz.description && normalizeString(biz.description).includes(normalizedQuery));
-    const matchesLocation = !locationParam || 
-      (biz.location?.address && normalizeString(biz.location.address).includes(normalizedLocation));
-    return matchesQuery && matchesLocation;
-  });
-
-  const filteredEvents = EVENTS.filter(event => {
-    const matchesQuery = !query || 
-      normalizeString(event.title).includes(normalizedQuery) || 
-      (event.description && normalizeString(event.description).includes(normalizedQuery));
-    const matchesLocation = !locationParam || 
-      normalizeString(event.locationName).includes(normalizedLocation) || 
-      (event.locationAddress && normalizeString(event.locationAddress).includes(normalizedLocation));
-    return matchesQuery && matchesLocation;
-  });
 
   // Interleave results: B1, E1, B2, E2...
   const mixedResults: any[] = [];
@@ -103,7 +95,15 @@ function SearchResultsContent() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
-          {paginatedResults.length > 0 ? (
+          {isLoading ? (
+            Array.from({ length: 6 }).map((_, i) => (
+              <div key={i} className="animate-pulse flex flex-col space-y-4 p-6 bg-slate-50 rounded-[2.5rem] border border-slate-100 min-h-[300px]">
+                <div className="bg-slate-200 rounded-[2rem] aspect-[4/3] w-full"></div>
+                <div className="h-6 bg-slate-200 rounded-md w-3/4"></div>
+                <div className="h-4 bg-slate-200 rounded-md w-1/2"></div>
+              </div>
+            ))
+          ) : paginatedResults.length > 0 ? (
             paginatedResults.map((item, index) => {
               if (item.type === 'business') {
                 return <BusinessCard key={`biz-${item.id}`} business={item} />;
