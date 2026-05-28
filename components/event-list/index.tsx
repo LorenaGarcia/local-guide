@@ -1,69 +1,88 @@
 "use client";
 
-import React, { useState } from 'react';
-import { EVENTS, CATEGORIES_EVENTS, MONTH_MAP } from '@/constants';
-import { EventCard } from './event-card';
+import React, { useState, useEffect } from 'react';
+import { CATEGORIES_EVENTS } from '@/constants';
+import { EventCard } from './components/event-card';
 import { CategoryFilter } from '@/components/category-filter';
 import { Pagination } from '@/components/pagination';
 import { CalendarModal } from '@/components/calendar';
 import { motion } from 'motion/react';
+import { getStoryblokApi } from '@storyblok/react/rsc';
+import { LocalEvent } from '@/types';
+import { CONTAINER_VARIANTS, ITEM_VARIANTS } from "./event-list.constants";
+import { getMappedEvents, getFilteredEvents } from './event-list.utils';
+import { Loading } from "./components/loading/loading"
 
-const containerVariants = {
-  hidden: { opacity: 0 },
-  show: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.1
-    }
-  }
-};
-
-const itemVariants = {
-  hidden: { opacity: 0, scale: 0.9, y: 20 },
-  show: { opacity: 1, scale: 1, y: 0, transition: { type: "spring" as const, stiffness: 350, damping: 25 } }
-};
 
 function EventList() {
+  const [events, setEvents] = useState<LocalEvent[]>([]);
+  const [loading, setLoading] = useState(true);
   const [selectedCategory, setSelectedCategory] = useState<string>('Todos');
   const [currentPage, setCurrentPage] = useState(1);
   const [isCalendarOpen, setIsCalendarOpen] = useState(false);
-  const [dateRange, setDateRange] = useState<{start: Date | null, end: Date | null}>({start: null, end: null});
+  const [dateRange, setDateRange] = useState<{ start: Date | null, end: Date | null }>({ start: null, end: null });
   const ITEMS_PER_PAGE = 6;
+
+  useEffect(() => {
+    async function loadEvents() {
+      try {
+        const storyblokApi = getStoryblokApi();
+        const response = await storyblokApi.get("cdn/stories/events_page", {
+          version: "draft",
+          resolve_relations: "Event card.link_detail",
+        });
+
+        const relsMap = new Map<string, { slug: string; category?: string }>();
+
+        if (response.data.rels) {
+          response.data.rels.forEach((rel: any) => {
+            const slug = rel.full_slug ? rel.full_slug.replace("eventos/", "") : rel.slug;
+            const resolvedBlok = rel.content?.body?.[0] || rel.content || {};
+            relsMap.set(rel.uuid, {
+              slug,
+              category: resolvedBlok.category,
+            });
+          });
+        }
+
+        const cards = response.data.story?.content?.body || [];
+        const mappedEvents = getMappedEvents(cards, relsMap);
+
+        setEvents(mappedEvents);
+      } catch (error) {
+        console.error("Error loading events from Storyblok:", error);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    loadEvents();
+  }, []);
 
   const handleCategorySelect = (category: string) => {
     setSelectedCategory(category);
     setCurrentPage(1);
   };
 
-  const filteredEvents = EVENTS.filter(event => {
-    const categoryMatch = selectedCategory === 'Todos' || event.category.toLowerCase() === selectedCategory.toLowerCase();
-    
-    let dateMatch = true;
-    if (dateRange.start) {
-      const currentYear = new Date().getFullYear();
-      const eventDate = new Date(currentYear, MONTH_MAP[event.month] || 0, parseInt(event.day));
-      if (dateRange.end) {
-        dateMatch = eventDate >= dateRange.start && eventDate <= dateRange.end;
-      } else {
-        dateMatch = eventDate.getTime() === dateRange.start.getTime();
-      }
-    }
-    
-    return categoryMatch && dateMatch;
-  });
-
-  const totalPages = Math.ceil(filteredEvents.length / ITEMS_PER_PAGE);
-  const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
-  const paginatedEvents = filteredEvents.slice(startIndex, startIndex + ITEMS_PER_PAGE);
-
   const handleApplyDateRange = (start: Date | null, end: Date | null) => {
     setDateRange({ start, end });
     setCurrentPage(1);
   };
 
+  const filteredEvents = getFilteredEvents(events, selectedCategory, dateRange);
+  const totalPages = Math.ceil(filteredEvents.length / ITEMS_PER_PAGE);
+  const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
+  const paginatedEvents = filteredEvents.slice(startIndex, startIndex + ITEMS_PER_PAGE);
+
+  if (loading) {
+    return (
+      <Loading />
+    );
+  }
+
   return (
-    <div className="max-w-[1400px] mx-auto px-4 md:px-12 py-16 bg-white">
-  
+    <div className="max-w-[1400px] mx-auto px-4 md:px-12 py-16 bg-white min-h-screen">
+
       <div className="flex flex-col md:flex-row justify-between items-end gap-8 mb-12">
         <div className="max-w-3xl">
           <h2 className="text-5xl md:text-6xl font-black tracking-tight mb-6 text-slate-800 leading-tight">
@@ -78,16 +97,16 @@ function EventList() {
 
       <div className="flex flex-wrap items-center justify-between gap-6 mb-12">
         <div className="flex flex-wrap items-center gap-4">
-          <CategoryFilter 
-            categories={CATEGORIES_EVENTS} 
-            selectedCategory={selectedCategory} 
-            onCategorySelect={handleCategorySelect} 
+          <CategoryFilter
+            categories={CATEGORIES_EVENTS}
+            selectedCategory={selectedCategory}
+            onCategorySelect={handleCategorySelect}
           />
           {(selectedCategory !== 'Todos' || dateRange.start) && (
-            <button 
+            <button
               onClick={() => {
                 setSelectedCategory('Todos');
-                setDateRange({start: null, end: null});
+                setDateRange({ start: null, end: null });
               }}
               className="text-slate-400 text-sm font-bold hover:text-[#E97451] transition-colors flex items-center gap-1"
             >
@@ -98,55 +117,55 @@ function EventList() {
         </div>
         <div className="flex gap-3">
           <div className="bg-white border border-slate-100 p-1.5 rounded-[2rem] flex items-center shadow-sm">
-          <button 
-            onClick={() => setIsCalendarOpen(true)}
-            className={`flex items-center gap-2 px-6 py-3 rounded-[1.5rem] text-sm font-bold transition-all ${
-              dateRange.start 
-                ? 'bg-[#EBF5F3] text-[#2D9C8D]' 
+            <button
+              onClick={() => setIsCalendarOpen(true)}
+              className={`flex items-center gap-2 px-6 py-3 rounded-[1.5rem] text-sm font-bold transition-all ${dateRange.start
+                ? 'bg-[#EBF5F3] text-[#2D9C8D]'
                 : 'text-slate-400 hover:text-slate-600'
-            }`}
-          >
-            <span className="material-symbols-outlined text-xl">calendar_today</span>
-            {dateRange.start ? 'Filtrado por fecha' : 'Calendario'}
-          </button>
-        </div>
+                }`}
+            >
+              <span className="material-symbols-outlined text-xl">calendar_today</span>
+              {dateRange.start ? 'Filtrado por fecha' : 'Calendario'}
+            </button>
+          </div>
         </div>
       </div>
 
 
-      <motion.div 
-        key={currentPage} 
+      <motion.div
+        key={currentPage}
         className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 pb-12"
-        variants={containerVariants}
+        variants={CONTAINER_VARIANTS}
         initial="hidden"
         animate="show"
       >
         {paginatedEvents.map((event) => {
-          const isSalmon = event.category.toLowerCase().includes('gastronomía') || event.category.toLowerCase().includes('arte');
-          
+
           return (
-            <motion.div key={event.id} variants={itemVariants}>
-              <EventCard event={event} isSalmon={isSalmon} />
+            <motion.div key={event.id} variants={ITEM_VARIANTS}>
+              <EventCard event={event} />
             </motion.div>
           );
         })}
         {filteredEvents.length === 0 && (
           <div className="col-span-full py-20 text-center">
-            <p className="text-slate-400 font-medium text-lg">No se encontraron eventos en esta categoría.</p>
+            <p className="text-slate-400 font-medium text-lg">No se encontraron eventos en esta categoría o fecha.</p>
           </div>
         )}
       </motion.div>
 
-      <Pagination 
-        currentPage={currentPage} 
-        totalPages={totalPages} 
-        onPageChange={setCurrentPage} 
-      />
+      {totalPages > 1 && (
+        <Pagination
+          currentPage={currentPage}
+          totalPages={totalPages}
+          onPageChange={setCurrentPage}
+        />
+      )}
 
-      <CalendarModal 
-        isOpen={isCalendarOpen} 
-        onClose={() => setIsCalendarOpen(false)} 
-        onApplyRange={handleApplyDateRange} 
+      <CalendarModal
+        isOpen={isCalendarOpen}
+        onClose={() => setIsCalendarOpen(false)}
+        onApplyRange={handleApplyDateRange}
       />
     </div>
   );

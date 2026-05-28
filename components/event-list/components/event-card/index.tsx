@@ -3,15 +3,9 @@
 import React from 'react';
 import Link from 'next/link';
 import { LocalEvent } from '@/types';
+import { getDateBadge } from './event-card.utils';
 
-function EventCard({ event, isSalmon }: { event: LocalEvent, isSalmon: boolean }) {
-
-
-  const getDateBadge = (id: string) => {
-    if (id === 'e1') return 'PRÓXIMO SÁBADO';
-    if (id === 'e4') return 'ESTE DOMINGO';
-    return 'EN 2 SEMANAS';
-  };
+function EventCard({ event }: { event: LocalEvent }) {
 
   return (
     <div className="relative group h-full min-h-[500px] overflow-hidden rounded-[2.5rem] shadow-sm hover:shadow-2xl transition-all duration-700 bg-[#1F4D47] flex flex-col">
@@ -31,7 +25,7 @@ function EventCard({ event, isSalmon }: { event: LocalEvent, isSalmon: boolean }
       <div className="relative z-20 p-8 flex flex-col h-full justify-end pointer-events-none">
         <div className="mb-4">
           <span className="bg-[#FDD475] text-[#1F4D47] px-3 py-1 rounded-lg text-[10px] font-black uppercase tracking-wider">
-            {getDateBadge(event.id)}
+            {getDateBadge(event)}
           </span>
         </div>
 

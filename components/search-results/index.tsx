@@ -3,36 +3,24 @@
 import React, { Suspense, useState } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
 import { BusinessCard } from '@/components/business-card';
-import { EventCard } from '@/components/event-list/event-card';
+import { EventCard } from '@/components/event-list/components/event-card';
 import { Pagination } from '@/components/pagination';
 
 function SearchResultsContent() {
-  const router = useRouter();
   const searchParams = useSearchParams();
-  const urlCategory = searchParams.get('category');
-  const query = searchParams.get('q') || '';
   const locationParam = searchParams.get('l') || '';
 
   const [filteredBusinesses, setFilteredBusinesses] = useState<any[]>([]);
   const [filteredEvents, setFilteredEvents] = useState<any[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
-  const [activeTab, setActiveTab] = useState<'businesses' | 'events'>('businesses');
-  const [selectedCategory, setSelectedCategory] = useState<string>(urlCategory || 'Todos');
+
   const [currentPage, setCurrentPage] = useState(1);
   const ITEMS_PER_PAGE = 6;
 
   React.useEffect(() => {
-    const categoryQuery = searchParams.get('category');
     const q = searchParams.get('q') || '';
     const l = searchParams.get('l') || '';
-    
-    if (categoryQuery) {
-      setSelectedCategory(categoryQuery);
-      setActiveTab('businesses');
-    } else if (!q && !categoryQuery) {
-      setSelectedCategory('Todos');
-      setActiveTab('businesses');
-    }
+
     setCurrentPage(1);
 
     const fetchResults = async () => {
@@ -52,20 +40,7 @@ function SearchResultsContent() {
     fetchResults();
   }, [searchParams]);
 
-  const handleCategoryChange = (category: string) => {
-    setSelectedCategory(category);
-    setCurrentPage(1);
 
-    const params = new URLSearchParams(searchParams.toString());
-    if (category === 'Todos') {
-      params.delete('category');
-    } else {
-      params.set('category', category);
-    }
-    router.push(`/search?${params.toString()}`, { scroll: false });
-  };
-
-  // Interleave results: B1, E1, B2, E2...
   const mixedResults: any[] = [];
   const maxLength = Math.max(filteredBusinesses.length, filteredEvents.length);
   for (let i = 0; i < maxLength; i++) {
@@ -108,9 +83,8 @@ function SearchResultsContent() {
               if (item.type === 'business') {
                 return <BusinessCard key={`biz-${item.id}`} business={item} />;
               } else {
-                const isSalmon = item.category?.toLowerCase().includes('gastronomía') || 
-                               item.category?.toLowerCase().includes('arte');
-                return <EventCard key={`event-${item.id}`} event={item} isSalmon={!!isSalmon} />;
+
+                return <EventCard key={`event-${item.id}`} event={item} />;
               }
             })
           ) : (
@@ -122,10 +96,10 @@ function SearchResultsContent() {
           )}
         </div>
 
-        <Pagination 
-          currentPage={currentPage} 
-          totalPages={totalPages} 
-          onPageChange={setCurrentPage} 
+        <Pagination
+          currentPage={currentPage}
+          totalPages={totalPages}
+          onPageChange={setCurrentPage}
         />
       </div>
     </div>
