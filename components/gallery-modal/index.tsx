@@ -1,19 +1,25 @@
 "use client";
 
-import React, { useState } from 'react';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import type { Swiper as SwiperType } from 'swiper';
-import { Navigation, Thumbs, FreeMode, EffectFade } from 'swiper/modules';
-import { GalleryModalProps } from '@/types';
+import React, { useState } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import type { Swiper as SwiperType } from "swiper";
+import { Navigation, Thumbs, FreeMode, EffectFade } from "swiper/modules";
+import { GalleryModalProps } from "@/types";
 
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
-import 'swiper/css/thumbs';
-import 'swiper/css/free-mode';
-import 'swiper/css/effect-fade';
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import "swiper/css/thumbs";
+import "swiper/css/free-mode";
+import "swiper/css/effect-fade";
 
-function GalleryModal({ isOpen, onClose, images, businessName, initialIndex = 0 }: GalleryModalProps) {
+function GalleryModal({
+  isOpen,
+  onClose,
+  images,
+  businessName,
+  initialIndex = 0,
+}: GalleryModalProps) {
   const [thumbsSwiper, setThumbsSwiper] = useState<SwiperType | null>(null);
   const [currentIndex, setCurrentIndex] = useState(initialIndex);
 
@@ -25,14 +31,16 @@ function GalleryModal({ isOpen, onClose, images, businessName, initialIndex = 0 
         className="absolute inset-0 opacity-20 pointer-events-none transition-all duration-700"
         style={{
           backgroundImage: `url(${images[currentIndex]})`,
-          backgroundPosition: 'center',
-          backgroundSize: 'cover'
+          backgroundPosition: "center",
+          backgroundSize: "cover",
         }}
       ></div>
 
       <div className="relative z-10 flex items-center justify-between px-8 py-8">
         <div>
-          <h2 className="text-white text-xl font-black tracking-tight">{businessName}</h2>
+          <h2 className="text-white text-xl font-black tracking-tight">
+            {businessName}
+          </h2>
           <p className="text-white/60 text-sm font-medium mt-1">
             {currentIndex + 1} de {images.length} fotos
           </p>
@@ -42,7 +50,9 @@ function GalleryModal({ isOpen, onClose, images, businessName, initialIndex = 0 
             onClick={onClose}
             className="w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-all border border-white/10"
           >
-            <span className="material-symbols-outlined text-2xl font-bold">close</span>
+            <span className="material-symbols-outlined text-2xl font-bold">
+              close
+            </span>
           </button>
         </div>
       </div>
@@ -56,10 +66,13 @@ function GalleryModal({ isOpen, onClose, images, businessName, initialIndex = 0 
           slidesPerView={1}
           initialSlide={initialIndex}
           navigation={{
-            nextEl: '.modal-next',
-            prevEl: '.modal-prev',
+            nextEl: ".modal-next",
+            prevEl: ".modal-prev",
           }}
-          thumbs={{ swiper: thumbsSwiper && !thumbsSwiper.destroyed ? thumbsSwiper : null }}
+          thumbs={{
+            swiper:
+              thumbsSwiper && !thumbsSwiper.destroyed ? thumbsSwiper : null,
+          }}
           onSlideChange={(swiper) => setCurrentIndex(swiper.activeIndex)}
           className="w-full h-full"
         >
@@ -77,10 +90,14 @@ function GalleryModal({ isOpen, onClose, images, businessName, initialIndex = 0 
         </Swiper>
 
         <button className="modal-prev absolute left-8 top-1/2 -translate-y-1/2 z-20 w-14 h-14 rounded-full bg-black/40 hover:bg-black/60 text-white flex items-center justify-center backdrop-blur-md transition-all border border-white/10 active:scale-95">
-          <span className="material-symbols-outlined text-3xl font-bold">chevron_left</span>
+          <span className="material-symbols-outlined text-3xl font-bold">
+            chevron_left
+          </span>
         </button>
         <button className="modal-next absolute right-8 top-1/2 -translate-y-1/2 z-20 w-14 h-14 rounded-full bg-black/40 hover:bg-black/60 text-white flex items-center justify-center backdrop-blur-md transition-all border border-white/10 active:scale-95">
-          <span className="material-symbols-outlined text-3xl font-bold">chevron_right</span>
+          <span className="material-symbols-outlined text-3xl font-bold">
+            chevron_right
+          </span>
         </button>
       </div>
 
@@ -89,16 +106,25 @@ function GalleryModal({ isOpen, onClose, images, businessName, initialIndex = 0 
           <Swiper
             onSwiper={setThumbsSwiper}
             spaceBetween={12}
-            slidesPerView={'auto'}
+            slidesPerView={"auto"}
             freeMode={true}
             watchSlidesProgress={true}
             modules={[FreeMode, Navigation, Thumbs]}
             className="thumbs-swiper"
           >
             {images.map((img, i) => (
-              <SwiperSlide key={i} style={{ width: '80px', height: '80px' }}>
-                <div className={`w-full h-full rounded-2xl overflow-hidden cursor-pointer transition-all duration-300 border-2 ${currentIndex === i ? 'border-[#FDD475] scale-110 shadow-lg' : 'border-transparent opacity-50 hover:opacity-100'}`}>
-                  <img src={img} className="w-full h-full object-cover" alt="thumbnail" />
+              <SwiperSlide key={i} style={{ width: "80px", height: "80px" }}>
+                <div
+                  className={`w-full h-full rounded-2xl overflow-hidden cursor-pointer transition-all duration-300 border-2 ${currentIndex === i
+                      ? "border-[#FDD475] scale-110 shadow-lg"
+                      : "border-transparent opacity-50 hover:opacity-100"
+                    }`}
+                >
+                  <img
+                    src={img}
+                    className="w-full h-full object-cover"
+                    alt="thumbnail"
+                  />
                 </div>
               </SwiperSlide>
             ))}

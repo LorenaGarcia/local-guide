@@ -1,63 +1,28 @@
 "use client";
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
+import { motion } from 'motion/react';
+
+import { useGetEventList } from "./hooks/use-get-event_list/use-get-event_list";
+
 import { CATEGORIES_EVENTS } from '@/constants';
-import { EventCard } from './components/event-card';
 import { CategoryFilter } from '@/components/category-filter';
 import { Pagination } from '@/components/pagination';
 import { CalendarModal } from '@/components/calendar';
-import { motion } from 'motion/react';
-import { getStoryblokApi } from '@storyblok/react/rsc';
-import { LocalEvent } from '@/types';
+
+import { EventCard } from './components/event-card';
+import { Loading } from "./components/loading/loading";
 import { CONTAINER_VARIANTS, ITEM_VARIANTS } from "./event-list.constants";
-import { getMappedEvents, getFilteredEvents } from './event-list.utils';
-import { Loading } from "./components/loading/loading"
+import { getFilteredEvents } from './event-list.utils';
 
 
 function EventList() {
-  const [events, setEvents] = useState<LocalEvent[]>([]);
-  const [loading, setLoading] = useState(true);
+  const { events, loading } = useGetEventList();
   const [selectedCategory, setSelectedCategory] = useState<string>('Todos');
   const [currentPage, setCurrentPage] = useState(1);
   const [isCalendarOpen, setIsCalendarOpen] = useState(false);
   const [dateRange, setDateRange] = useState<{ start: Date | null, end: Date | null }>({ start: null, end: null });
   const ITEMS_PER_PAGE = 6;
-
-  useEffect(() => {
-    async function loadEvents() {
-      try {
-        const storyblokApi = getStoryblokApi();
-        const response = await storyblokApi.get("cdn/stories/events_page", {
-          version: "draft",
-          resolve_relations: "Event card.link_detail",
-        });
-
-        const relsMap = new Map<string, { slug: string; category?: string }>();
-
-        if (response.data.rels) {
-          response.data.rels.forEach((rel: any) => {
-            const slug = rel.full_slug ? rel.full_slug.replace("eventos/", "") : rel.slug;
-            const resolvedBlok = rel.content?.body?.[0] || rel.content || {};
-            relsMap.set(rel.uuid, {
-              slug,
-              category: resolvedBlok.category,
-            });
-          });
-        }
-
-        const cards = response.data.story?.content?.body || [];
-        const mappedEvents = getMappedEvents(cards, relsMap);
-
-        setEvents(mappedEvents);
-      } catch (error) {
-        console.error("Error loading events from Storyblok:", error);
-      } finally {
-        setLoading(false);
-      }
-    }
-
-    loadEvents();
-  }, []);
 
   const handleCategorySelect = (category: string) => {
     setSelectedCategory(category);

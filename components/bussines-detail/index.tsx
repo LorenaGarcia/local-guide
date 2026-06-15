@@ -5,12 +5,16 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { GalleryModal } from "@/components/gallery-modal";
 import { storyblokEditable } from "@storyblok/react/rsc";
-import { AmenityBlok, EventBlok, ScheduleBlok, BusinessDetailProps } from "./business-detail.types";
-import { SOCIAL_ICONS } from "./business-detail.constants"
-import { getBusinessDetailData } from "./business-detail.utils"
+import {
+  AmenityBlok,
+  EventBlok,
+  ScheduleBlok,
+  BusinessDetailProps,
+} from "./business-detail.types";
+import { SOCIAL_ICONS } from "./business-detail.constants";
+import { getBusinessDetailData } from "./business-detail.utils";
 import { Gallery } from "./components/gallery/gallery";
 import { EventCard } from "./components/event-card/event-card";
-
 
 function BusinessDetail({ blok }: BusinessDetailProps) {
   const [isGalleryOpen, setIsGalleryOpen] = useState(false);
@@ -35,7 +39,7 @@ function BusinessDetail({ blok }: BusinessDetailProps) {
     addressPlace,
     price,
     descriptionTitle,
-    activeSocialMedia
+    activeSocialMedia,
   } = getBusinessDetailData(blok);
 
   const openGallery = (index: number) => {
@@ -43,7 +47,8 @@ function BusinessDetail({ blok }: BusinessDetailProps) {
     setIsGalleryOpen(true);
   };
 
-  const galleryImages = gallery && gallery.length > 0 ? gallery : (image ? [image] : []);
+  const galleryImages =
+    gallery && gallery.length > 0 ? gallery : image ? [image] : [];
 
   return (
     <div
@@ -110,10 +115,14 @@ function BusinessDetail({ blok }: BusinessDetailProps) {
             <div className="flex flex-wrap gap-3 mb-16 pb-12 border-b border-slate-50">
               {activeSocialMedia.map((social, i) => {
                 const config = SOCIAL_ICONS[social.label] || {
-                  icon: <span className="material-symbols-outlined text-lg">{social.icon}</span>,
-                  bgColor: 'bg-slate-50 text-slate-600',
-                  iconColor: 'text-slate-500',
-                  hoverBorder: 'hover:border-slate-200 hover:bg-slate-50'
+                  icon: (
+                    <span className="material-symbols-outlined text-lg">
+                      {social.icon}
+                    </span>
+                  ),
+                  bgColor: "bg-slate-50 text-slate-600",
+                  iconColor: "text-slate-500",
+                  hoverBorder: "hover:border-slate-200 hover:bg-slate-50",
                 };
                 return (
                   <a
@@ -201,11 +210,11 @@ function BusinessDetail({ blok }: BusinessDetailProps) {
                     </span>
                     <div className="text-right">
                       <span className="text-4xl font-black text-[#1F4D47]">
-                        {price.split('/')[0].trim()}
+                        {price.split("/")[0].trim()}
                       </span>
-                      {price.includes('/') && (
+                      {price.includes("/") && (
                         <span className="text-slate-400 font-bold text-sm ml-1">
-                          /{price.split('/').slice(1).join('/')}
+                          /{price.split("/").slice(1).join("/")}
                         </span>
                       )}
                     </div>
@@ -221,12 +230,15 @@ function BusinessDetail({ blok }: BusinessDetailProps) {
               )}
 
               {schedules.length > 0 && (
-                <div className={`space-y-5 ${price ? 'mb-10' : 'mb-10'}`}>
+                <div className={`space-y-5 ${price ? "mb-10" : "mb-10"}`}>
                   <p className="text-[10px] font-black text-slate-300 uppercase tracking-widest mb-4">
                     HORARIOS
                   </p>
                   {schedules.map((sched: ScheduleBlok) => (
-                    <div key={sched._uid} className="flex justify-between items-center text-sm">
+                    <div
+                      key={sched._uid}
+                      className="flex justify-between items-center text-sm"
+                    >
                       <div className="flex items-center gap-2.5 text-slate-400 font-bold">
                         <span className="material-symbols-outlined text-[18px]">
                           schedule
@@ -242,7 +254,12 @@ function BusinessDetail({ blok }: BusinessDetailProps) {
               )}
 
               {address && (
-                <div className={`space-y-4 pt-4 ${(price || schedules.length > 0) ? 'border-t border-slate-50' : ''}`}>
+                <div
+                  className={`space-y-4 pt-4 ${price || schedules.length > 0
+                      ? "border-t border-slate-50"
+                      : ""
+                    }`}
+                >
                   <p className="text-[10px] font-black text-slate-300 uppercase tracking-widest">
                     UBICACIÓN
                   </p>

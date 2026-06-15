@@ -1,7 +1,6 @@
 "use client";
 
 import React from "react";
-import { Search } from "@/components/search";
 import { motion } from "motion/react";
 import { storyblokEditable } from "@storyblok/react/rsc";
 import { HomeBannerStoryblok } from "./home-banner.types";
@@ -15,10 +14,9 @@ export const HomeBanner = ({ blok }: { blok: HomeBannerStoryblok }) => {
       <div
         className="absolute inset-0 bg-cover bg-center transition-transform duration-1000"
         style={{
-          backgroundImage: `url('${
-            blok.image?.filename ||
+          backgroundImage: `url('${blok.image?.filename ||
             "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&q=80&w=2000"
-          }')`,
+            }')`,
         }}
       ></div>
       <div className="absolute inset-0 bg-black/40"></div>
@@ -41,7 +39,6 @@ export const HomeBanner = ({ blok }: { blok: HomeBannerStoryblok }) => {
             "Encuentra los mejores servicios locales, desde cafeterías acogedoras hasta expertos en mascotas."}
         </p>
 
-        <Search />
       </div>
     </section>
   );

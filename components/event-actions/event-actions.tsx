@@ -190,8 +190,8 @@ export function EventActions({
         <div className="fixed bottom-8 right-8 z-50 flex items-center gap-4 bg-slate-900/95 backdrop-blur-md text-white px-6 py-4 rounded-[2rem] border border-white/10 shadow-2xl animate-fade-in-up max-w-sm transition-all duration-300">
           <div
             className={`w-10 h-10 rounded-full flex items-center justify-center shrink-0 ${toastType === "success"
-              ? "bg-[#C1E1DC] text-slate-900"
-              : "bg-[#FDD475] text-slate-900"
+                ? "bg-[#C1E1DC] text-slate-900"
+                : "bg-[#FDD475] text-slate-900"
               }`}
           >
             <span className="material-symbols-outlined text-xl">

@@ -5,7 +5,6 @@ import Link from "next/link";
 import { BusinessCardProps } from "@/types";
 
 function BusinessCard({ business }: BusinessCardProps) {
-
   const { id, image, name, description, tags, address, url } = business;
   const href = url || `/business/${id}`;
 
@@ -46,19 +45,17 @@ function BusinessCard({ business }: BusinessCardProps) {
           <div className="flex flex-col gap-5 pt-5 border-t border-slate-50 border-dashed">
             <div className="flex flex-wrap gap-2">
               {tags &&
-                  tags.map((tag, index) => (
-                    <span
-                      key={index}
-                      className="px-3 py-1.5 rounded-full text-[10px] font-black uppercase tracking-[0.1em] border border-[#F4A261]/50 text-[#F4A261] bg-[#F4A261]/5"
-                    >
-                      {tag}
-                    </span>
-                  ))}
+                tags.map((tag, index) => (
+                  <span
+                    key={index}
+                    className="px-3 py-1.5 rounded-full text-[10px] font-black uppercase tracking-[0.1em] border border-[#F4A261]/50 text-[#F4A261] bg-[#F4A261]/5"
+                  >
+                    {tag}
+                  </span>
+                ))}
             </div>
 
-            <div 
-              className="w-full mt-2 py-2.5 rounded-full border border-[#2D9C8D] text-[#2D9C8D] text-[11px] font-black uppercase tracking-widest hover:bg-[#2D9C8D] hover:text-white transition-all text-center shadow-sm"
-            >
+            <div className="w-full mt-2 py-2.5 rounded-full border border-[#2D9C8D] text-[#2D9C8D] text-[11px] font-black uppercase tracking-widest hover:bg-[#2D9C8D] hover:text-white transition-all text-center shadow-sm">
               VER MÁS
             </div>
           </div>

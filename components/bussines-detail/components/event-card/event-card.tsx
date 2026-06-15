@@ -7,19 +7,17 @@ interface EventCardProps {
 
 export function EventCard({ event }: EventCardProps) {
     return (
-        <div
-            className="bg-white border border-slate-50 p-8 rounded-[2.5rem] shadow-sm hover:shadow-xl transition-all flex flex-col justify-between h-full"
-        >
+        <div className="bg-white border border-slate-50 p-8 rounded-[2.5rem] shadow-sm hover:shadow-xl transition-all flex flex-col justify-between h-full">
             <div>
                 <div className="flex justify-between items-start mb-6">
                     {event.tag && (
                         <span
                             className={`${event.price === "GRATIS"
-                                ? "bg-[#FFF9ED] text-[#D4A017]"
-                                : "bg-[#FFF2F0] text-[#FF8A71]"
+                                    ? "bg-[#FFF9ED] text-[#D4A017]"
+                                    : "bg-[#FFF2F0] text-[#FF8A71]"
                                 } text-[9px] font-black px-3 py-1.5 rounded-lg uppercase tracking-wider`}
                         >
-                            {event.tag.replace(/_/g, ' ')}
+                            {event.tag.replace(/_/g, " ")}
                         </span>
                     )}
                     <span className="text-[#1F4D47] font-black text-xl">
@@ -35,7 +33,9 @@ export function EventCard({ event }: EventCardProps) {
             </div>
             {event.button && event.button[0] && (
                 <a
-                    href={event.button[0].url?.url || event.button[0].url?.cached_url || "#"}
+                    href={
+                        event.button[0].url?.url || event.button[0].url?.cached_url || "#"
+                    }
                     target="_blank"
                     rel="noopener noreferrer"
                     className="w-full bg-[#C1E1DC] py-4 rounded-2xl font-black text-[13px] text-[#1F4D47] hover:brightness-105 transition-all text-center block"
