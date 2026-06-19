@@ -11,7 +11,6 @@ export async function GET(request: Request) {
   const normalizedLocation = l.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
 
   try {
-    // 1. Obtener negocios de Storyblok a partir de la historia única "business_page"
     const businessPageStory = await fetchStory("business_page");
     const businessBloks = businessPageStory?.content?.body || [];
 
@@ -19,7 +18,7 @@ export async function GET(request: Request) {
       .filter((b: any) => b.is_active || b.is_active === undefined)
       .map((b: any) => {
         let targetUrl = undefined;
-        
+
         if (b.link_detail && typeof b.link_detail === 'object' && b.link_detail.full_slug) {
           const slug = b.link_detail.full_slug;
           targetUrl = slug.startsWith('business/') ? `/${slug}` : `/business/${slug.replace(/^\//, '')}`;
@@ -27,7 +26,7 @@ export async function GET(request: Request) {
           const slug = b.link_detail.cached_url;
           targetUrl = slug.startsWith('business/') ? `/${slug}` : `/business/${slug.replace(/^\//, '')}`;
         } else if (typeof b.link_detail === 'string' && b.link_detail.trim() !== '') {
-          targetUrl = `/business/${b.link_detail}`; 
+          targetUrl = `/business/${b.link_detail}`;
         }
 
         return {
@@ -41,22 +40,20 @@ export async function GET(request: Request) {
         };
       });
 
-    // Filtrar los negocios en memoria
     let filteredBusinesses = mappedBusinesses;
     if (q) {
-      filteredBusinesses = filteredBusinesses.filter((biz: any) => 
+      filteredBusinesses = filteredBusinesses.filter((biz: any) =>
         (biz.name && biz.name.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().includes(normalizedQuery)) ||
         (biz.description && biz.description.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().includes(normalizedQuery)) ||
         (biz.tags && biz.tags.some((tag: string) => tag.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().includes(normalizedQuery)))
       );
     }
     if (l) {
-      filteredBusinesses = filteredBusinesses.filter((biz: any) => 
+      filteredBusinesses = filteredBusinesses.filter((biz: any) =>
         biz.address && biz.address.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().includes(normalizedLocation)
       );
     }
 
-    // 2. Obtener eventos de Storyblok
     const storyblokApi = getStoryblokApi();
     const eventParams: any = {
       version: "draft",
@@ -70,8 +67,7 @@ export async function GET(request: Request) {
 
     const mappedEvents = (eventData.stories || []).map((story: any) => {
       const blok = story.content.body?.[0] || story.content || {};
-      
-      // Parsear fecha para obtener día y mes
+
       let month = "";
       let day = "";
       let finalTimeStr = blok.schedule || blok.time || "18:00";
@@ -112,10 +108,9 @@ export async function GET(request: Request) {
       };
     });
 
-    // Filtrar los eventos en memoria por ubicación si se proporciona
     let filteredEvents = mappedEvents;
     if (l) {
-      filteredEvents = filteredEvents.filter((ev: any) => 
+      filteredEvents = filteredEvents.filter((ev: any) =>
         (ev.locationName && ev.locationName.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().includes(normalizedLocation)) ||
         (ev.locationAddress && ev.locationAddress.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().includes(normalizedLocation))
       );

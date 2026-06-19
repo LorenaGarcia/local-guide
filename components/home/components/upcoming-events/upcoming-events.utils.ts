@@ -45,7 +45,6 @@ function getEvents(eventBloks?: EventBlok[]) {
             b.link_detail.cached_url ||
             "";
           if (storyUrl) {
-            // Ensure Storyblok event route always uses the Spanish 'eventos/' prefix
             if (storyUrl.startsWith("events/")) {
               storyUrl = storyUrl.replace("events/", "eventos/");
             } else if (!storyUrl.startsWith("eventos/") && !storyUrl.startsWith("http") && !storyUrl.startsWith("/")) {
